@@ -1,0 +1,13 @@
+{
+    "recommendations": [
+        "github.vscode-pull-request-github",
+        "emilast.logfilehighlighter",
+        "mikestead.dotenv",
+        "mechatroner.rainbow-csv",
+        "streetsidesoftware.code-spell-checker",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "deque-systems.vscode-axe-linter",
+    ],
+    "unwantedRecommendations": []
+}

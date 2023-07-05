@@ -1,0 +1,85 @@
+{
+  "settings": {
+    // React のバージョンは自動判定とする
+    "react": {
+      "version": "detect"
+    }
+  },
+  "extends": [
+    // ルールセットは基本的に "recommended" （推奨）のみを使う
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "react-hooks", "import", "unused-imports", "@typescript-eslint"],
+  "rules": {
+    // import/order
+    "import/order": [
+      "warn",
+      {
+        "groups": ["builtin", "external", "internal", ["parent", "sibling", "index"]],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"]
+      }
+    ],
+    "no-case-declarations": "warn",
+    "no-console": "off",
+    "no-dupe-keys": "warn",
+    "no-negated-in-lhs": "warn",
+    "no-irregular-whitespace": "warn",
+    "no-redeclare": "warn",
+    "no-return-await": "warn",
+    "no-unsafe-negation": "warn",
+    "no-undef": "warn",
+    "no-unused-expressions": "warn",
+    "no-use-before-define": "warn",
+    "no-useless-constructor": "warn",
+    "no-useless-escape": "warn",
+    "no-var": "warn",
+    "object-shorthand": "error",
+    "prefer-const": "warn",
+    "prefer-arrow-callback": "error",
+    // react
+    "react/react-in-jsx-scope": "off",
+    "react/display-name": "warn",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-no-target-blank": "warn",
+    "react/jsx-key": "warn",
+    "react/no-string-refs": "warn",
+    "react/no-direct-mutation-state": "warn",
+    "react/no-deprecated": "warn",
+    "react/prop-types": "warn",
+    "unused-imports/no-unused-imports": "warn",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ]
+  }
+}

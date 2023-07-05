@@ -1,0 +1,46 @@
+{
+  "name": "yuishimamura-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint 'src/**' --ext .js,.ts,.tsx,.mdx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint --fix 'src/**' --ext .js,.ts,.tsx,.mdx",
+    "lint:write": "prettier --write 'src/**/*.(js|ts|tsx|mdx)'",
+    "lint:check": "prettier --check 'src/**/*.(js|ts|tsx|mdx)'"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1410.0",
+    "i18next": "^23.2.7",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "moment-duration-format": "^2.3.2",
+    "moment-timezone": "^0.5.43",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.37",
+    "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "eslint": "^8.38.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-react": "^7.25.3",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "prettier": "^2.8.8",
+    "typescript": "^5.0.2",
+    "vite": "^4.3.9"
+  },
+  "volta": {
+    "node": "18.16.1",
+    "npm": "9.7.2"
+  }
+}

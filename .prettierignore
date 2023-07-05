@@ -1,0 +1,11 @@
+dist/
+pubilc/
+node_modules/
+package-lock.json
+.DS_Store
+*.html
+*.css
+*.scss
+*.snap
+*.svg
+*.yml
