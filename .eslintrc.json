@@ -71,6 +71,7 @@
     "react/no-direct-mutation-state": "warn",
     "react/no-deprecated": "warn",
     "react/prop-types": "warn",
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }],
     "unused-imports/no-unused-imports": "warn",
     "unused-imports/no-unused-vars": [
       "warn",

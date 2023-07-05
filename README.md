@@ -15,3 +15,30 @@
 - [React](https://ja.react.dev/)
 - [TailWind](https://tailwindcss.com/)
 - [Emotion](https://emotion.sh/)
+
+## Infrastructure
+
+主に AWS のリソースを使用しています。
+
+- Cloudfront
+- S3
+- ACM
+- Route53
+
+```sh
+# terraform plan
+make plan-wp
+
+# terraform apply
+make apply-wp
+```
+
+## Deploy
+
+```sh
+# upload to S3
+make deploy-s3
+
+# deploy to cloudfront
+make deploy-cf
+```
