@@ -8,6 +8,10 @@
 | Framework       | react + typeScript |
 | CSS             | tailWind + emotion |
 
-※ node のパッケージマネージャーは volta を推奨
+※ Node のパッケージマネージャーは volta を推奨
 
-[Volta](https://volta.sh/)
+- [Volta](https://volta.sh/)
+- [Vite](https://ja.vitejs.dev/)
+- [React](https://ja.react.dev/)
+- [TailWind](https://tailwindcss.com/)
+- [Emotion](https://emotion.sh/)
