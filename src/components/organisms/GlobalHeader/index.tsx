@@ -8,12 +8,12 @@ const GlobalHeader = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header>
-      <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+    <header className="py-6 px-4 sm:p-6 md:px-8">
+      <nav className="flex items-center justify-between" aria-label="Global">
         <div className="flex lg:flex-1">
           <a
             href="/"
-            className="m-4 text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"
+            className="my-4 text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"
           >
             Yui Shimamura Illustration Site
           </a>
@@ -41,7 +41,7 @@ const GlobalHeader = () => {
             About
           </a>
           <a
-            href="https://www.instagram.com/smmryi/"
+            href="https://www.instagram.com/yui_illustrations/"
             className="m-4 uppercase text-2xl font-bold text-[#aaa] transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-[#333] duration-300"
           >
             <i
