@@ -65,10 +65,10 @@ function App() {
       <>
         <Head
           title="Shops | Yui Shimamura Illustration Site"
-          description="Yui Shimamuraは、独自の芸術スタイルと創造性で知られる才能あるイラストレーターです。魅力的なイラストレーションがあなたを想像力と美しさに満ちた世界へと誘います。最新のプロジェクトや展覧会に関する情報は、Instagramをフォローしてください。"
-          keywords="Yui Shimamura, イラストレーター, 芸術, クリエイティビティ, イラストレーション, 想像力, 美しさ, ポートフォリオ, プロジェクト, 展覧会, Instagram"
+          description="Yui Shimamura の公式ショップページです。ここでは、魅力的なイラストを使用したオリジナルのLINEスタンプやグッズを購入することができます。Yui Shimamura の魅力あふれるイラストを身近に感じるためのオンラインストアです。是非、ご覧ください。"
+          keywords="Yui Shimamura, イラストレーター, ショップ, LINEスタンプ, 購入, グッズ, イラスト, オンラインストア"
           ogTitle="Shops | Yui Shimamura Illustration Site"
-          ogDescription="Yui Shimamuraは、独自の芸術スタイルと創造性で知られる才能あるイラストレーターです。魅力的なイラストレーションがあなたを想像力と美しさに満ちた世界へと誘います。最新のプロジェクトや展覧会に関する情報は、Instagramをフォローしてください。"
+          ogDescription="Yui Shimamura の公式ショップページです。ここでは、魅力的なイラストを使用したオリジナルのLINEスタンプやグッズを購入することができます。Yui Shimamura の魅力あふれるイラストを身近に感じるためのオンラインストアです。是非、ご覧ください。"
           ogType="website"
           ogUrl="https://yuishimamura.com/shops/"
           ogImage="https://yuishimamura.com/public/images/og_image.webp"
