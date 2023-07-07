@@ -9,6 +9,7 @@ import GlobalHeader from './components/organisms/GlobalHeader';
 
 const IllustrationPage = lazy(async () => await import('./components/organisms/IllustrationPage'));
 const About = lazy(async () => await import('./components/organisms/About'));
+const Shops = lazy(async () => await import('./components/organisms/Shops'));
 const PageNotFound = lazy(async () => await import('./components/organisms/404'));
 
 function App() {
@@ -57,6 +58,28 @@ function App() {
         </>
       }
     />,
+    <Route
+    key="shops"
+    path="/shops"
+    element={
+      <>
+        <Head
+          title="Shops | Yui Shimamura Illustration Site"
+          description="Yui Shimamuraは、独自の芸術スタイルと創造性で知られる才能あるイラストレーターです。魅力的なイラストレーションがあなたを想像力と美しさに満ちた世界へと誘います。最新のプロジェクトや展覧会に関する情報は、Instagramをフォローしてください。"
+          keywords="Yui Shimamura, イラストレーター, 芸術, クリエイティビティ, イラストレーション, 想像力, 美しさ, ポートフォリオ, プロジェクト, 展覧会, Instagram"
+          ogTitle="Shops | Yui Shimamura Illustration Site"
+          ogDescription="Yui Shimamuraは、独自の芸術スタイルと創造性で知られる才能あるイラストレーターです。魅力的なイラストレーションがあなたを想像力と美しさに満ちた世界へと誘います。最新のプロジェクトや展覧会に関する情報は、Instagramをフォローしてください。"
+          ogType="website"
+          ogUrl="https://yuishimamura.com/shops/"
+          ogImage="https://yuishimamura.com/public/images/og_image.webp"
+          ogImageHeight="200"
+          ogImageWidth="200"
+          ogSiteName="Yui Shimamura Illustration Site"
+        />
+        <Shops />
+      </>
+    }
+  />,
     <Route
       key="not_found"
       path="*"

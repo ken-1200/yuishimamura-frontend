@@ -36,7 +36,7 @@ apply-wp:
 
 .PHONY: deploy-s3
 deploy-s3:
-	aws s3 sync src/ ${DEPLOY_BUCKET} --delete --profile ${AWS_PROFILE}
+	aws s3 sync dist/ ${DEPLOY_BUCKET} --delete --profile ${AWS_PROFILE}
 
 .PHONY: deploy-cf
 deploy-cf:

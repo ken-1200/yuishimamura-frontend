@@ -41,6 +41,12 @@ const GlobalHeader = () => {
             About
           </a>
           <a
+            href="/shops"
+            className="m-4 uppercase text-2xl font-bold text-[#aaa] transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-[#333] duration-300"
+          >
+            Shops
+          </a>
+          <a
             href="https://www.instagram.com/yui_illustrations/"
             className="m-4 uppercase text-2xl font-bold text-[#aaa] transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-[#333] duration-300"
           >
@@ -86,6 +92,12 @@ const GlobalHeader = () => {
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   About
+                </a>
+                <a
+                  href="/shops"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  Shops
                 </a>
                 <a
                   href="https://www.instagram.com/yui_illustrations/"
