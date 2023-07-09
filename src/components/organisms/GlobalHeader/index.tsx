@@ -15,7 +15,7 @@ const GlobalHeader = () => {
             href="/"
             className="my-4 text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"
           >
-            Yui Shimamura Illustration Site
+            Yui Shimamura Illustrations
           </a>
         </div>
         <div className="flex lg:hidden">
@@ -29,7 +29,7 @@ const GlobalHeader = () => {
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a
-            href="/"
+            href="/illustrations"
             className="m-4 uppercase text-2xl font-bold text-[#aaa] transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-[#333] duration-300"
           >
             Illustrations
@@ -41,10 +41,16 @@ const GlobalHeader = () => {
             About
           </a>
           <a
-            href="/shops"
+            href="https://suzuri.jp/yuishimamura/"
             className="m-4 uppercase text-2xl font-bold text-[#aaa] transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-[#333] duration-300"
           >
-            Shops
+            Suzuri
+          </a>
+          <a
+            href="https://line.me/S/sticker/23392341/?lang=ja&utm_source=gnsh_stickerDetail"
+            className="m-4 uppercase text-2xl font-bold text-[#aaa] transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-[#333] duration-300"
+          >
+            LINE stamp
           </a>
           <a
             href="https://www.instagram.com/yui_illustrations/"
@@ -82,7 +88,7 @@ const GlobalHeader = () => {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 <a
-                  href="/"
+                  href="/illustrations"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Illustrations
@@ -94,10 +100,16 @@ const GlobalHeader = () => {
                   About
                 </a>
                 <a
-                  href="/shops"
+                  href="https://suzuri.jp/yuishimamura/"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Shops
+                  Suzuri
+                </a>
+                <a
+                  href="https://line.me/S/sticker/23392341/?lang=ja&utm_source=gnsh_stickerDetail"
+                  className="-mx-3 block rounded-lg px-3 py-2.5 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                >
+                  LINE stamp
                 </a>
                 <a
                   href="https://www.instagram.com/yui_illustrations/"

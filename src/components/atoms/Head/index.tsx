@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 type Props = {
   title: string;
@@ -13,6 +13,7 @@ type Props = {
   ogImageWidth: string;
   ogSiteName: string;
 };
+
 const Head = ({
   title,
   description,

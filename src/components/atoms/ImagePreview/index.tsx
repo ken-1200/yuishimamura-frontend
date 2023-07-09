@@ -1,7 +1,7 @@
-/* eslint-disable no-undef */
-import { memo, useState, useEffect } from 'react';
+import { memo, useState } from 'react';
 
 import { css } from '@emotion/react';
+import { XMarkIcon } from '@heroicons/react/24/solid';
 
 type Props = {
   src: string;
@@ -10,25 +10,9 @@ type Props = {
 
 const ImagePreview = ({ src, alt }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 640); // スクリーン幅が640px未満の場合にtrueとなるように設定
-    };
-
-    handleResize(); // 初回レンダリング時に実行
-    window.addEventListener('resize', handleResize); // リサイズイベントの監視
-
-    return () => {
-      window.removeEventListener('resize', handleResize); // コンポーネントがアンマウントされるときにイベントリスナーを削除
-    };
-  }, []);
 
   const handleOpen = () => {
-    if (!isMobile) {
-      setIsOpen(true);
-    }
+    setIsOpen(true);
   };
 
   const handleClose = () => {
@@ -54,7 +38,7 @@ const ImagePreview = ({ src, alt }: Props) => {
           user-select: none;
         `}
       />
-      {isOpen && !isMobile && (
+      {isOpen && (
         <div
           onClick={handleClose}
           css={css`
@@ -63,10 +47,15 @@ const ImagePreview = ({ src, alt }: Props) => {
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.8);
             z-index: 1;
           `}
         >
+          <XMarkIcon
+            className="absolute top-0 right-0 h-20 w-20 text-white ml-auto cursor-pointer"
+            aria-hidden="true"
+            onClick={handleClose}
+          />
           <div
             css={css`
               position: absolute;
@@ -76,7 +65,7 @@ const ImagePreview = ({ src, alt }: Props) => {
             `}
           >
             <img
-              className="sm:max-w-[60rem] sm:max-h-[60rem] rounded-lg"
+              className="max-w-[80vw] max-h-[80vh] rounded-lg"
               loading="lazy"
               onContextMenu={(e) => e.preventDefault()}
               src={src}
