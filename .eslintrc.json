@@ -1,4 +1,11 @@
 {
+  "globals": {
+    "process": true
+  },
+  "env": {
+    "node": true,
+    "browser": true
+  },
   "settings": {
     // React のバージョンは自動判定とする
     "react": {
@@ -49,7 +56,7 @@
     "no-negated-in-lhs": "warn",
     "no-irregular-whitespace": "warn",
     "no-redeclare": "warn",
-    "no-return-await": "warn",
+    "no-return-await": "off",
     "no-unsafe-negation": "warn",
     "no-undef": "warn",
     "no-unused-expressions": "warn",

@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-/* eslint-disable no-return-await */
 import { lazy, Suspense, useState, useEffect } from 'react';
 
 import { css } from '@emotion/react';

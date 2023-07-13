@@ -4,10 +4,10 @@ import { useState, memo, useEffect } from 'react';
 import ImagePreview from '../../atoms/ImagePreview';
 
 const IllustrationPage = () => {
-  const [illustrations, setIllustrations] = useState<{ id: string; idx: string; src: string; alt: string }[]>([]);
+  const [illustrations, setIllustrations] = useState<Array<{ id: number; idx: number; src: string; alt: string }>>([]);
 
   useEffect(() => {
-    fetch('/src/data/images.json')
+    fetch('/images.json')
       .then((response) => response.json())
       .then((json) => {
         setIllustrations(json.images);
