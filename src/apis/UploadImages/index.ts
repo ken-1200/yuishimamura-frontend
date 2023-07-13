@@ -1,14 +1,15 @@
 import { type AxiosResponse } from 'axios';
 
-import { apiClient, defaultErrorHandler } from './ApiClient';
+import { apiClient, defaultErrorHandler } from '../ApiClient';
 
 type UploadImageRequest = {
-  images: string[];
+  images: Array<string>;
   images_json: { images: Array<{ id: number; idx: number; src: string; alt: string }> };
 };
 
 type UploadImageResponse = {
   status_code: string;
+  s3_uris: Array<string>;
 };
 
 export const UploadImageApi = {

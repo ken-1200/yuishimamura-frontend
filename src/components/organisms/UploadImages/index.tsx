@@ -8,11 +8,18 @@ import { PhotoIcon } from '@heroicons/react/24/solid';
 import { useUploadImages } from '../../../hooks/useUploadImages';
 import ImagePreview from '../../atoms/ImagePreview';
 
+type Illustration = {
+  id: number;
+  idx: number;
+  src: string;
+  alt: string;
+};
+
 const UploadImages = () => {
   const maxImageSizeKB = 5000; // 5MBまで
 
   const [imagesJson, setImagesJson] = useState<{
-    images: Array<{ id: number; idx: number; src: string; alt: string }>;
+    images: Array<Illustration>;
   }>({ images: [] });
   const [images, setImages] = useState<File[]>([]);
   const [imageSizeKB, setImageSizeKB] = useState<number>(0);
@@ -91,7 +98,7 @@ const UploadImages = () => {
   };
 
   // file read exclude undefined
-  const getBase64Images = (base64Images: string[] | undefined): string[] => {
+  const getBase64Images = (base64Images: Array<string> | undefined): Array<string> => {
     if (base64Images === undefined) {
       return [];
     }
@@ -112,7 +119,7 @@ const UploadImages = () => {
     if (images) {
       try {
         const imageDataArray = await Promise.all(images.map(syncFileReader));
-        const base64Array = imageDataArray.filter((result) => typeof result === 'string') as string[];
+        const base64Array = imageDataArray.filter((result) => typeof result === 'string') as Array<string>;
         return base64Array;
       } catch (error) {
         console.error('preFilesReader Error:', error);
@@ -123,7 +130,7 @@ const UploadImages = () => {
 
   // Upload API
   const upload = useCallback(
-    async (images: string[], images_json: { images: Array<{ id: number; idx: number; src: string; alt: string }> }) => {
+    async (images: Array<string>, images_json: { images: Array<Illustration> }) => {
       try {
         await uploadImages({
           images,
@@ -190,7 +197,7 @@ const UploadImages = () => {
                     <div className="mt-4 flex text-sm leading-6 text-gray-600">
                       <label
                         htmlFor="file-upload"
-                        className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                        className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none hover:text-indigo-500"
                       >
                         <span>Upload a file</span>
                         <input
@@ -271,7 +278,6 @@ const UploadImages = () => {
               className="-m-3 p-3 focus-visible:outline-offset-[-4px]"
               onClick={() => closeSuccessAlert()}
             >
-              <span className="sr-only">Dismiss</span>
               <XMarkIcon className="h-7 w-7 text-[#4afa8d]" aria-hidden="true" />
             </button>
           </div>
@@ -289,7 +295,6 @@ const UploadImages = () => {
               className="-m-3 p-3 focus-visible:outline-offset-[-4px]"
               onClick={() => closeErrorAlert()}
             >
-              <span className="sr-only">Dismiss</span>
               <XMarkIcon className="h-7 w-7 text-[#f8b9b9]" aria-hidden="true" />
             </button>
           </div>

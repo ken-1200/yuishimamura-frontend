@@ -13,6 +13,7 @@ const TopPage = lazy(async () => await import('./components/organisms/TopPage'))
 const IllustrationPage = lazy(async () => await import('./components/organisms/IllustrationPage'));
 const About = lazy(async () => await import('./components/organisms/About'));
 const UploadImages = lazy(async () => await import('./components/organisms/UploadImages'));
+const EditImages = lazy(async () => await import('./components/organisms/EditImages'));
 const PageNotFound = lazy(async () => await import('./components/organisms/404'));
 
 const App = () => {
@@ -106,6 +107,28 @@ const App = () => {
       }
     />,
     <Route
+      key="edit_images"
+      path="/edit_images"
+      element={
+        <>
+          <Head
+            title="EditImages | Yui Shimamura Illustration Site"
+            description=""
+            keywords=""
+            ogTitle="EditImages | Yui Shimamura Illustration Site"
+            ogDescription=""
+            ogType="website"
+            ogUrl="https://yuishimamura.com/edit_images/"
+            ogImage="https://yuishimamura.com/public/images/og_image.webp"
+            ogImageHeight="200"
+            ogImageWidth="200"
+            ogSiteName="Yui Shimamura Illustration Site"
+          />
+          <EditImages />
+        </>
+      }
+    />,
+    <Route
       key="not_found"
       path="*"
       element={
@@ -141,7 +164,7 @@ const App = () => {
   // };
 
   useEffect(() => {
-    const reservedPathName = ['/illustrations', '/upload_images'];
+    const reservedPathName = ['/illustrations', '/upload_images', '/edit_images'];
 
     window.addEventListener('resize', handleWindowHeightResize);
     // window.addEventListener('resize', handleWindowWidthResize);

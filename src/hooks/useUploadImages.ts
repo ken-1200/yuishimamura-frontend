@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
-import { UploadImageApi } from '../apis';
+import { UploadImageApi } from '../apis/UploadImages';
 
 const uploadImages = async (images: {
-  images: string[];
+  images: Array<string>;
   images_json: { images: Array<{ id: number; idx: number; src: string; alt: string }> };
 }) => {
   console.info('useUploadImages.uploadImages', images);
