@@ -74,6 +74,12 @@ const EditImages = () => {
     }
   };
 
+  // click cancel
+  const handleOnCancelImages = () => {
+    setCheckedIllustrations([]);
+    loadingIllustrations();
+  };
+
   // delete/update API
   const deleteUpdate = useCallback(
     async (images_path: Array<string>, images_json: { images: Array<Illustration> }) => {
@@ -200,6 +206,13 @@ const EditImages = () => {
       <div className="mt-6 mb-6 flex items-center justify-start gap-x-6">
         <button
           type="button"
+          className="text-sm font-semibold leading-6 text-gray-900"
+          onClick={() => handleOnCancelImages()}
+        >
+          Reset
+        </button>
+        <button
+          type="button"
           className="px-3 py-2 text-sm text-white font-semibold leading-6 bg-indigo-600 rounded-md  shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           onClick={(e) => handleOnSubmit(e)}
         >
@@ -230,7 +243,7 @@ const EditImages = () => {
         onDragCancel={handleDragCancel}
       >
         <SortableContext items={illustrations} strategy={rectSortingStrategy}>
-          <div className="grid grid-rows-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
+          <div className="grid grid-rows-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
             {illustrations.map((item) => (
               <SortableItem
                 key={item.id}
