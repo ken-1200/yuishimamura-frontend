@@ -31,6 +31,7 @@ const ImagePreview = ({ src, alt }: Props) => {
         alt={alt}
         css={css`
           cursor: pointer;
+          box-shadow: rgb(63 63 68 / 3%) 0px 0px 0px 1px, rgb(34 33 81 / 5%) 0px 1px 3px 0px;
           -webkit-touch-callout: none;
           -webkit-user-select: none;
           -moz-touch-callout: none;
