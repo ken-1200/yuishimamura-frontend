@@ -1,6 +1,5 @@
 {
     "images": [
-        {"id": 0, "idx": 0, "src": "/images/IMG_0.webp", "alt": "IMG_0"},
         {"id": 1, "idx": 1, "src": "/images/IMG_1.webp", "alt": "IMG_1"},
         {"id": 2, "idx": 2, "src": "/images/IMG_2.webp", "alt": "IMG_2"},
         {"id": 3, "idx": 3, "src": "/images/IMG_3.webp", "alt": "IMG_3"},
@@ -38,6 +37,7 @@
         {"id": 35, "idx": 35, "src": "/images/IMG_35.webp", "alt": "IMG_35"},
         {"id": 36, "idx": 36, "src": "/images/IMG_36.webp", "alt": "IMG_36"},
         {"id": 37, "idx": 37, "src": "/images/IMG_37.webp", "alt": "IMG_37"},
-        {"id": 38, "idx": 38, "src": "/images/IMG_38.webp", "alt": "IMG_38"}
+        {"id": 38, "idx": 38, "src": "/images/IMG_38.webp", "alt": "IMG_38"},
+        {"id": 39, "idx": 39, "src": "/images/IMG_39.webp", "alt": "IMG_39"}
     ]
 }

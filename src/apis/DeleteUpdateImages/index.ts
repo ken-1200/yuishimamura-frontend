@@ -2,21 +2,21 @@ import { type AxiosResponse } from 'axios';
 
 import { apiClient, defaultErrorHandler } from '../ApiClient';
 
-type DeleteImageRequest = {
+type DeleteUpdateImageRequest = {
   images_path: Array<string>;
   images_json: { images: Array<{ id: number; idx: number; src: string; alt: string }> };
 };
 
-type DeleteImageResponse = {
+type DeleteUpdateImageResponse = {
   status_code: string;
   s3_uris: Array<string>;
 };
 
-export const DeleteImageApi = {
-  BASE_URL: '/api/v1/delete_images',
-  create: async (params: DeleteImageRequest) => {
+export const DeleteUpdateImageApi = {
+  BASE_URL: '/api/v1/delete_update_images',
+  create: async (params: DeleteUpdateImageRequest) => {
     return await apiClient
-      .post<DeleteImageRequest, AxiosResponse<DeleteImageResponse>>(DeleteImageApi.BASE_URL, params)
+      .post<DeleteUpdateImageRequest, AxiosResponse<DeleteUpdateImageResponse>>(DeleteUpdateImageApi.BASE_URL, params)
       .catch(defaultErrorHandler);
   },
 };

@@ -1,11 +1,24 @@
-/* eslint-disable no-undef */
-import { useState, memo, useEffect, useCallback } from 'react';
+import { useState, memo, useEffect, useCallback, SyntheticEvent, ChangeEvent } from 'react';
 
+import {
+  DndContext,
+  DragOverlay,
+  useSensor,
+  useSensors,
+  DragStartEvent,
+  DragEndEvent,
+  TouchSensor,
+  closestCenter,
+  MouseSensor,
+} from '@dnd-kit/core';
+import { arrayMove, SortableContext, rectSortingStrategy } from '@dnd-kit/sortable';
+import { css } from '@emotion/react';
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 
-import { useDeleteImages } from '../../../hooks/useDeleteImages';
-import ImagePreview from '../../atoms/ImagePreview';
+import { useDeleteUpdateImages } from '../../../hooks/useDeleteUpdateImages';
+import ImageItem from '../../atoms/ImageItem';
+import SortableItem from '../../atoms/SortableItem';
 
 type Illustration = {
   id: number;
@@ -15,16 +28,13 @@ type Illustration = {
 };
 
 const EditImages = () => {
-  const [imagesJson, setImagesJson] = useState<{
-    images: Array<Illustration>;
-  }>({ images: [] });
   const [illustrations, setIllustrations] = useState<Array<Illustration>>([]);
   const [checkedIllustrations, setCheckedIllustrations] = useState<Array<Illustration>>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const { deleteImages } = useDeleteImages();
+  const { deleteUpdateImages } = useDeleteUpdateImages();
 
   // error alert button
   const openErrorAlert = () => {
@@ -48,13 +58,12 @@ const EditImages = () => {
       .then((response) => response.json())
       .then((json) => {
         setIllustrations(json.images);
-        setImagesJson(json);
       })
       .catch((error) => console.log(error));
   };
 
   // checkbox
-  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>, illustration: Illustration) => {
+  const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>, illustration: Illustration) => {
     const isChecked = event.target.checked;
 
     if (isChecked) {
@@ -65,11 +74,11 @@ const EditImages = () => {
     }
   };
 
-  // Delete API
-  const _delete = useCallback(
+  // delete/update API
+  const deleteUpdate = useCallback(
     async (images_path: Array<string>, images_json: { images: Array<Illustration> }) => {
       try {
-        await deleteImages({
+        await deleteUpdateImages({
           images_path,
           images_json,
         });
@@ -79,20 +88,72 @@ const EditImages = () => {
         openErrorAlert();
       }
     },
-    [deleteImages],
+    [deleteUpdateImages],
   );
 
   // save button
-  const handleOnSubmit = async (e: React.SyntheticEvent): Promise<void> => {
+  const handleOnSubmit = async (e: SyntheticEvent): Promise<void> => {
     setIsLoading(true);
     e.preventDefault();
 
     const srcArray = checkedIllustrations.map((item) => item.src);
+    const imagesJson = { images: illustrations };
 
-    await _delete(srcArray, imagesJson);
+    await deleteUpdate(srcArray, imagesJson);
     setIsLoading(false);
     setCheckedIllustrations([]);
     loadingIllustrations();
+  };
+
+  // for drag overlay
+  const [activeItem, setActiveItem] = useState<Illustration>();
+
+  // for input methods detection
+  const sensors = useSensors(
+    useSensor(MouseSensor, {
+      // Require the mouse to move by 5 pixels before activating
+      activationConstraint: {
+        distance: 3,
+      },
+    }),
+    useSensor(TouchSensor, {
+      // Press delay of 250ms, with tolerance of 5px of movement
+      activationConstraint: {
+        delay: 150,
+        tolerance: 3,
+      },
+    }),
+  );
+
+  // triggered when dragging starts
+  const handleDragStart = (event: DragStartEvent) => {
+    const { active } = event;
+    setActiveItem(illustrations.find((item) => item.id === active.id));
+  };
+
+  // triggered when dragging ends
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+    if (!over) return;
+
+    const activeItem = illustrations.find((item) => item.id === active.id);
+    const overItem = illustrations.find((item) => item.id === over.id);
+
+    if (!activeItem || !overItem) {
+      return;
+    }
+
+    const activeIndex = illustrations.findIndex((item) => item.id === active.id);
+    const overIndex = illustrations.findIndex((item) => item.id === over.id);
+
+    if (activeIndex !== overIndex) {
+      setIllustrations((prev) => arrayMove<Illustration>(prev, activeIndex, overIndex));
+    }
+    setActiveItem(undefined);
+  };
+
+  const handleDragCancel = () => {
+    setActiveItem(undefined);
   };
 
   useEffect(() => {
@@ -106,7 +167,7 @@ const EditImages = () => {
         <div className="relative isolate flex items-center gap-x-6 overflow-hidden bg-[#f0fdf4] px-6 py-4 mt-10">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <CheckCircleIcon className="h-7 w-7 text-[#4afa8d]" aria-hidden="true" />
-            <p className="text-xl font-bold text-[#166534]">Successfully deleted</p>
+            <p className="text-xl font-bold text-[#166534]">Successfully deleted / updated</p>
           </div>
           <div className="flex flex-1 justify-end">
             <button
@@ -136,12 +197,11 @@ const EditImages = () => {
           </div>
         </div>
       ) : null}
-      <div className="mt-6 flex items-center justify-start gap-x-6">
+      <div className="mt-6 mb-6 flex items-center justify-start gap-x-6">
         <button
           type="button"
-          className="px-3 py-2 text-sm text-white font-semibold leading-6 bg-indigo-600 rounded-md  shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
+          className="px-3 py-2 text-sm text-white font-semibold leading-6 bg-indigo-600 rounded-md  shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           onClick={(e) => handleOnSubmit(e)}
-          disabled={checkedIllustrations.length === 0}
         >
           {isLoading ? (
             <svg
@@ -158,25 +218,45 @@ const EditImages = () => {
               ></path>
             </svg>
           ) : (
-            'Delete'
+            'Save'
           )}
         </button>
       </div>
-      <div className="grid grid-rows-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
-        {illustrations.map((illustration) => (
-          <div key={illustration.id} className="relative">
-            <input
-              id={String(illustration.id)}
-              name="illustrations"
-              type="checkbox"
-              className="absolute right-0 h-6 w-6 rounded-full border-gray-300 text-indigo-400 focus:ring-indigo-400"
-              checked={checkedIllustrations.some((i) => i.id === illustration.id)}
-              onChange={(e) => handleCheckboxChange(e, illustration)}
-            />
-            <ImagePreview src={illustration.src} alt={illustration.alt} />
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCenter}
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+        onDragCancel={handleDragCancel}
+      >
+        <SortableContext items={illustrations} strategy={rectSortingStrategy}>
+          <div className="grid grid-rows-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
+            {illustrations.map((item) => (
+              <SortableItem
+                key={item.id}
+                item={item}
+                checkedIllustrations={checkedIllustrations}
+                handleCheckboxChange={handleCheckboxChange}
+              />
+            ))}
           </div>
-        ))}
-      </div>
+        </SortableContext>
+        <DragOverlay
+          adjustScale
+          css={css`
+            transform-origin: 0 0;
+          `}
+        >
+          {activeItem ? (
+            <ImageItem
+              item={activeItem}
+              checkedIllustrations={checkedIllustrations}
+              handleCheckboxChange={handleCheckboxChange}
+              isDragging
+            />
+          ) : null}
+        </DragOverlay>
+      </DndContext>
     </div>
   );
 };
