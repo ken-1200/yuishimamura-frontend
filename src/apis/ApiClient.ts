@@ -3,6 +3,7 @@ import axios from 'axios';
 import { type AxiosError } from './axios-error';
 
 const API_ENDPONT = import.meta.env.VITE_API_ENDPONT;
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 const client = axios.create({
   // withCredentials: true,
@@ -13,7 +14,7 @@ client.interceptors.request.use(
   (config) => {
     config.baseURL = API_ENDPONT;
     config.headers['Content-Type'] = 'application/json';
-    config.headers['X-YUISHIMAMURA-API-KEY'] = 'local';
+    config.headers['X-YUISHIMAMURA-API-KEY'] = API_KEY;
     return config;
   },
   (error) => {
