@@ -1,3 +1,6 @@
+###################################################
+## main domain用(yuishimamura.com) Certificate
+###################################################
 # ACM Certificate
 resource "aws_acm_certificate" "certificate" {
   domain_name       = "${var.main_domain}"
@@ -22,8 +25,8 @@ resource "aws_route53_record" "certificate_validation" {
   name            = each.value.name
   records         = [each.value.record]
   type            = each.value.type
-  zone_id = "${var.zone_id}"
-  ttl = 60
+  zone_id         = "${var.zone_id}"
+  ttl             = 60
 }
 
 # Wait for ACM validation
@@ -46,3 +49,29 @@ resource "aws_route53_record" "www" {
   depends_on = [aws_cloudfront_distribution.distribution]
 }
 # ↑aws_cloudfront_distribution リソースで作成されたCloudFront Distribution に www.main_domain のエイリアスを作成しています。aliasブロックを使用することで、AレコードにCNAMEの振る舞いを追加し、CloudFrontのエンドポイントに直接アクセスすることができます。
+
+
+###################################################
+## main domain(API)用 Certificate
+###################################################
+
+resource "aws_acm_certificate" "main-domain-api-cert" {
+  domain_name       = "api.${var.main_domain}"
+  validation_method = "DNS"
+}
+
+resource "aws_route53_record" "main-domain-api-cert-validation" {
+  for_each = { for el in aws_acm_certificate.main-domain-api-cert.domain_validation_options : el.domain_name => el }
+
+  zone_id  = "${var.zone_id}"
+
+  name     = each.value.resource_record_name
+  type     = each.value.resource_record_type
+  records  = [each.value.resource_record_value]
+  ttl      = 60
+}
+
+resource "aws_acm_certificate_validation" "main-domain-api-cert" {
+  certificate_arn         = aws_acm_certificate.main-domain-api-cert.arn
+  validation_record_fqdns = [for record in aws_route53_record.main-domain-api-cert-validation: record.fqdn]
+}
