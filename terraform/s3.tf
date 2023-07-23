@@ -3,11 +3,6 @@ resource "aws_s3_bucket" "bucket" {
   bucket = "${local.s3_bucket_name}"
 }
 
-resource "aws_s3_bucket_acl" "bucket" {
-  bucket = aws_s3_bucket.bucket.id
-  acl    = "private"
-}
-
 resource "aws_s3_bucket_versioning" "bucket" {
   bucket = aws_s3_bucket.bucket.id
 
