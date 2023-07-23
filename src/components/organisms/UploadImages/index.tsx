@@ -3,6 +3,7 @@ import { memo, useState, DragEvent, useCallback, useEffect, ChangeEvent, Synthet
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { PhotoIcon } from '@heroicons/react/24/solid';
+import { Link } from 'react-router-dom';
 
 import { useUploadImages } from '../../../hooks/useUploadImages';
 import ImagePreview from '../../atoms/ImagePreview';
@@ -233,6 +234,9 @@ const UploadImages = () => {
         </div>
 
         <div className="mt-6 flex items-center justify-end gap-x-6">
+          <Link to="/edit_images" className="text-sm font-semibold leading-6 text-gray-900">
+            To EditPage
+          </Link>
           <button
             type="button"
             className="text-sm font-semibold leading-6 text-gray-900"

@@ -15,6 +15,7 @@ import { arrayMove, SortableContext, rectSortingStrategy } from '@dnd-kit/sortab
 import { css } from '@emotion/react';
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import { XMarkIcon } from '@heroicons/react/24/solid';
+import { Link } from 'react-router-dom';
 
 import { useDeleteUpdateImages } from '../../../hooks/useDeleteUpdateImages';
 import ImageItem from '../../atoms/ImageItem';
@@ -204,6 +205,9 @@ const EditImages = () => {
         </div>
       ) : null}
       <div className="mt-6 mb-6 flex items-center justify-start gap-x-6">
+        <Link to="/upload_images" className="text-sm font-semibold leading-6 text-gray-900">
+          To UploadPage
+        </Link>
         <button
           type="button"
           className="text-sm font-semibold leading-6 text-gray-900"
