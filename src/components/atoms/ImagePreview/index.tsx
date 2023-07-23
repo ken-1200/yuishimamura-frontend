@@ -71,6 +71,13 @@ const ImagePreview = ({ src, alt }: Props) => {
               onContextMenu={(e) => e.preventDefault()}
               src={src}
               alt={alt}
+              css={css`
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -moz-touch-callout: none;
+                -moz-user-select: none;
+                user-select: none;
+              `}
             />
           </div>
         </div>

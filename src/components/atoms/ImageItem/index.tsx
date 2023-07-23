@@ -60,6 +60,11 @@ const ImageItem = forwardRef<HTMLDivElement, Props>(
               : 'rgb(63 63 68 / 5%) 0px 0px 0px 1px, rgb(34 33 81 / 15%) 0px 1px 3px 0px'};
             max-width: 100%;
             object-fit: cover;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-touch-callout: none;
+            -moz-user-select: none;
+            user-select: none;
           `}
         />
       </div>
