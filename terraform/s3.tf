@@ -17,6 +17,8 @@ resource "aws_s3_bucket_policy" "bucket" {
   policy = data.aws_iam_policy_document.bucket.json
 }
 
+data "aws_caller_identity" "current" {}
+
 data "aws_iam_policy_document" "bucket" {
   statement {
     principals {
@@ -31,6 +33,22 @@ data "aws_iam_policy_document" "bucket" {
       test     = "StringEquals"
       variable = "aws:SourceArn"
       values   = [aws_cloudfront_distribution.distribution.arn]
+    }
+  }
+
+  # Additional statement to allow Lambda to put and delete objects
+  statement {
+    principals {
+      type        = "Service"
+      identifiers = ["lambda.amazonaws.com"]
+    }
+    actions   = ["s3:PutObject", "s3:DeleteObject"]
+    resources = ["${aws_s3_bucket.bucket.arn}/*"]
+
+    condition {
+      test     = "ArnEquals"
+      variable = "aws:SourceArn"
+      values   = ["arn:aws:lambda:${var.aws_region}:${data.aws_caller_identity.current.account_id}:function:p01-yuishimamura-api"]
     }
   }
 }
