@@ -1,5 +1,4 @@
-/* eslint-disable no-undef */
-import { memo, useState, DragEvent, useCallback, useEffect } from 'react';
+import { memo, useState, DragEvent, useCallback, useEffect, ChangeEvent, SyntheticEvent } from 'react';
 
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import { XMarkIcon } from '@heroicons/react/24/solid';
@@ -75,12 +74,13 @@ const UploadImages = () => {
   };
 
   // click
-  const handleOnAddImage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files) return;
-    if (e.target.files.length === 0) return;
+  const handleOnAddImage = (event: ChangeEvent<HTMLInputElement>) => {
+    if (!event.target.files) return;
+    if (event.target.files.length === 0) return;
 
-    setImageSizeKB(imageSizeKB + Math.floor(e.target.files[0].size / 1024));
-    setImages([...images, ...e.target.files]);
+    setImageSizeKB(imageSizeKB + Math.floor(event.target.files[0].size / 1024));
+    setImages([...images, ...event.target.files]);
+    event.target.value = '';
   };
 
   // click remove
@@ -146,7 +146,7 @@ const UploadImages = () => {
   );
 
   // save button
-  const handleOnSubmit = async (e: React.SyntheticEvent): Promise<void> => {
+  const handleOnSubmit = async (e: SyntheticEvent): Promise<void> => {
     setIsLoading(true);
     e.preventDefault();
 
@@ -206,7 +206,7 @@ const UploadImages = () => {
                           type="file"
                           accept="image/*,.png,.jpg,.jpeg,.gif"
                           className="sr-only"
-                          onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleOnAddImage(e)}
+                          onChange={(e) => handleOnAddImage(e)}
                         />
                       </label>
                       <p className="pl-1">or drag and drop</p>
