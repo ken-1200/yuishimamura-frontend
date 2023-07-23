@@ -6,6 +6,7 @@ import { PhotoIcon } from '@heroicons/react/24/solid';
 import { Link } from 'react-router-dom';
 
 import { useUploadImages } from '../../../hooks/useUploadImages';
+import Head from '../../atoms/Head';
 import ImagePreview from '../../atoms/ImagePreview';
 
 type Illustration = {
@@ -170,6 +171,19 @@ const UploadImages = () => {
 
   return (
     <>
+      <Head
+        title="UploadImages | Yui Shimamura Illustration Site"
+        description=""
+        keywords=""
+        ogTitle="UploadImages | Yui Shimamura Illustration Site"
+        ogDescription=""
+        ogType="website"
+        ogUrl="https://yuishimamura.com/upload_images/"
+        ogImage="https://yuishimamura.com/public/images/og_image.webp"
+        ogImageHeight="200"
+        ogImageWidth="200"
+        ogSiteName="Yui Shimamura Illustration Site"
+      />
       <form onSubmit={(e) => handleOnSubmit(e)}>
         <div className="space-y-12">
           <div className="border-b border-gray-900/10 pb-12">

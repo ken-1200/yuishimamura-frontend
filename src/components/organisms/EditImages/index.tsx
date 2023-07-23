@@ -18,6 +18,7 @@ import { XMarkIcon } from '@heroicons/react/24/solid';
 import { Link } from 'react-router-dom';
 
 import { useDeleteUpdateImages } from '../../../hooks/useDeleteUpdateImages';
+import Head from '../../atoms/Head';
 import ImageItem from '../../atoms/ImageItem';
 import SortableItem from '../../atoms/SortableItem';
 
@@ -168,113 +169,128 @@ const EditImages = () => {
   }, []);
 
   return (
-    <div className="mt-20">
-      <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Edit Illustrations</h2>
-      {isSuccess ? (
-        <div className="relative isolate flex items-center gap-x-6 overflow-hidden bg-[#f0fdf4] px-6 py-4 mt-10">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <CheckCircleIcon className="h-7 w-7 text-[#4afa8d]" aria-hidden="true" />
-            <p className="text-xl font-bold text-[#166534]">Successfully deleted / updated</p>
+    <>
+      <Head
+        title="EditImages | Yui Shimamura Illustration Site"
+        description=""
+        keywords=""
+        ogTitle="EditImages | Yui Shimamura Illustration Site"
+        ogDescription=""
+        ogType="website"
+        ogUrl="https://yuishimamura.com/edit_images/"
+        ogImage="https://yuishimamura.com/public/images/og_image.webp"
+        ogImageHeight="200"
+        ogImageWidth="200"
+        ogSiteName="Yui Shimamura Illustration Site"
+      />
+      <div className="mt-20">
+        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Edit Illustrations</h2>
+        {isSuccess ? (
+          <div className="relative isolate flex items-center gap-x-6 overflow-hidden bg-[#f0fdf4] px-6 py-4 mt-10">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+              <CheckCircleIcon className="h-7 w-7 text-[#4afa8d]" aria-hidden="true" />
+              <p className="text-xl font-bold text-[#166534]">Successfully deleted / updated</p>
+            </div>
+            <div className="flex flex-1 justify-end">
+              <button
+                type="button"
+                className="-m-3 p-3 focus-visible:outline-offset-[-4px]"
+                onClick={() => closeSuccessAlert()}
+              >
+                <XMarkIcon className="h-7 w-7 text-[#4afa8d]" aria-hidden="true" />
+              </button>
+            </div>
           </div>
-          <div className="flex flex-1 justify-end">
-            <button
-              type="button"
-              className="-m-3 p-3 focus-visible:outline-offset-[-4px]"
-              onClick={() => closeSuccessAlert()}
-            >
-              <XMarkIcon className="h-7 w-7 text-[#4afa8d]" aria-hidden="true" />
-            </button>
+        ) : null}
+        {isError ? (
+          <div className="relative isolate flex items-center gap-x-6 overflow-hidden bg-[#FEF2F2] px-6 py-4 mt-10">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+              <CheckCircleIcon className="h-7 w-7 text-[#f8b9b9]" aria-hidden="true" />
+              <p className="text-xl font-bold text-[#991B1B]">There were errors with your submission</p>
+            </div>
+            <div className="flex flex-1 justify-end">
+              <button
+                type="button"
+                className="-m-3 p-3 focus-visible:outline-offset-[-4px]"
+                onClick={() => closeErrorAlert()}
+              >
+                <XMarkIcon className="h-7 w-7 text-[#f8b9b9]" aria-hidden="true" />
+              </button>
+            </div>
           </div>
+        ) : null}
+        <div className="mt-6 mb-6 flex items-center justify-start gap-x-6">
+          <Link to="/upload_images" className="text-sm font-semibold leading-6 text-gray-900">
+            To UploadPage
+          </Link>
+          <button
+            type="button"
+            className="text-sm font-semibold leading-6 text-gray-900"
+            onClick={() => handleOnCancelImages()}
+          >
+            Reset
+          </button>
+          <button
+            type="button"
+            className="px-3 py-2 text-sm text-white font-semibold leading-6 bg-indigo-600 rounded-md  shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            onClick={(e) => handleOnSubmit(e)}
+          >
+            {isLoading ? (
+              <svg
+                className="w-5 h-5 mr-1 ml-1 text-white animate-spin"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+            ) : (
+              'Save'
+            )}
+          </button>
         </div>
-      ) : null}
-      {isError ? (
-        <div className="relative isolate flex items-center gap-x-6 overflow-hidden bg-[#FEF2F2] px-6 py-4 mt-10">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <CheckCircleIcon className="h-7 w-7 text-[#f8b9b9]" aria-hidden="true" />
-            <p className="text-xl font-bold text-[#991B1B]">There were errors with your submission</p>
-          </div>
-          <div className="flex flex-1 justify-end">
-            <button
-              type="button"
-              className="-m-3 p-3 focus-visible:outline-offset-[-4px]"
-              onClick={() => closeErrorAlert()}
-            >
-              <XMarkIcon className="h-7 w-7 text-[#f8b9b9]" aria-hidden="true" />
-            </button>
-          </div>
-        </div>
-      ) : null}
-      <div className="mt-6 mb-6 flex items-center justify-start gap-x-6">
-        <Link to="/upload_images" className="text-sm font-semibold leading-6 text-gray-900">
-          To UploadPage
-        </Link>
-        <button
-          type="button"
-          className="text-sm font-semibold leading-6 text-gray-900"
-          onClick={() => handleOnCancelImages()}
+        <DndContext
+          sensors={sensors}
+          collisionDetection={closestCenter}
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+          onDragCancel={handleDragCancel}
         >
-          Reset
-        </button>
-        <button
-          type="button"
-          className="px-3 py-2 text-sm text-white font-semibold leading-6 bg-indigo-600 rounded-md  shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          onClick={(e) => handleOnSubmit(e)}
-        >
-          {isLoading ? (
-            <svg
-              className="w-5 h-5 mr-1 ml-1 text-white animate-spin"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-              ></path>
-            </svg>
-          ) : (
-            'Save'
-          )}
-        </button>
-      </div>
-      <DndContext
-        sensors={sensors}
-        collisionDetection={closestCenter}
-        onDragStart={handleDragStart}
-        onDragEnd={handleDragEnd}
-        onDragCancel={handleDragCancel}
-      >
-        <SortableContext items={illustrations} strategy={rectSortingStrategy}>
-          <div className="grid grid-rows-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
-            {illustrations.map((item) => (
-              <SortableItem
-                key={item.id}
-                item={item}
+          <SortableContext items={illustrations} strategy={rectSortingStrategy}>
+            <div className="grid grid-rows-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
+              {illustrations.map((item) => (
+                <SortableItem
+                  key={item.id}
+                  item={item}
+                  checkedIllustrations={checkedIllustrations}
+                  handleCheckboxChange={handleCheckboxChange}
+                />
+              ))}
+            </div>
+          </SortableContext>
+          <DragOverlay
+            adjustScale
+            css={css`
+              transform-origin: 0 0;
+            `}
+          >
+            {activeItem ? (
+              <ImageItem
+                item={activeItem}
                 checkedIllustrations={checkedIllustrations}
                 handleCheckboxChange={handleCheckboxChange}
+                isDragging
               />
-            ))}
-          </div>
-        </SortableContext>
-        <DragOverlay
-          adjustScale
-          css={css`
-            transform-origin: 0 0;
-          `}
-        >
-          {activeItem ? (
-            <ImageItem
-              item={activeItem}
-              checkedIllustrations={checkedIllustrations}
-              handleCheckboxChange={handleCheckboxChange}
-              isDragging
-            />
-          ) : null}
-        </DragOverlay>
-      </DndContext>
-    </div>
+            ) : null}
+          </DragOverlay>
+        </DndContext>
+      </div>
+    </>
   );
 };
 export default memo(EditImages);
