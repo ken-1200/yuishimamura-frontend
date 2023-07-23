@@ -20,23 +20,67 @@ resource "aws_cloudfront_distribution" "distribution" {
     ssl_support_method  = "sni-only"
   }
   default_cache_behavior {
-    allowed_methods  = ["HEAD", "GET"]
-    cached_methods   = ["HEAD", "GET"]
-    target_origin_id = "${aws_s3_bucket.bucket.id}"
+    target_origin_id       = "${aws_s3_bucket.bucket.id}"
+    viewer_protocol_policy = "redirect-to-https"
+
+    allowed_methods = ["HEAD", "GET"]
+    cached_methods  = ["HEAD", "GET"]
+    compress        = true
+
+    min_ttl     = 0
+    default_ttl = 3600
+    max_ttl     = 86400
+
     forwarded_values {
       query_string = false
       cookies {
         forward = "none"
       }
     }
-    viewer_protocol_policy = "redirect-to-https"
-    compress               = true
-    min_ttl                = 0
-    default_ttl            = 3600
-    max_ttl                = 86400
+
     function_association {
       event_type   = "viewer-request"
       function_arn = local.function_spa_qualified_arn
+    }
+  }
+  ordered_cache_behavior {
+    path_pattern           = "/images/IMG_*.webp"
+    target_origin_id       = "${aws_s3_bucket.bucket.id}"
+    viewer_protocol_policy = "redirect-to-https"
+
+    allowed_methods = ["HEAD", "GET"]
+    cached_methods  = ["HEAD", "GET"]
+    compress        = false
+
+    min_ttl     = 0
+    default_ttl = 0
+    max_ttl     = 0
+
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+  }
+  ordered_cache_behavior {
+    path_pattern           = "/images.json"
+    target_origin_id       = "${aws_s3_bucket.bucket.id}"
+    viewer_protocol_policy = "redirect-to-https"
+
+    allowed_methods = ["HEAD", "GET"]
+    cached_methods  = ["HEAD", "GET"]
+    compress        = false
+
+    min_ttl     = 0
+    default_ttl = 0
+    max_ttl     = 0
+
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
     }
   }
   restrictions {
