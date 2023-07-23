@@ -14,7 +14,7 @@ client.interceptors.request.use(
   (config) => {
     config.baseURL = API_ENDPONT;
     config.headers['Content-Type'] = 'application/json';
-    config.headers['X-YUISHIMAMURA-API-KEY'] = API_KEY;
+    config.headers['X-Api-Key'] = API_KEY;
     return config;
   },
   (error) => {
