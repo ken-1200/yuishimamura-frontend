@@ -1,8 +1,8 @@
 {
     "images": [
-        {"id": 6, "idx": 6, "src": "/images/IMG_6.webp", "alt": "IMG_6"},
         {"id": 39, "idx": 39, "src": "/images/IMG_39.webp", "alt": "IMG_39"},
         {"id": 1, "idx": 1, "src": "/images/IMG_1.webp", "alt": "IMG_1"},
+        {"id": 6, "idx": 6, "src": "/images/IMG_6.webp", "alt": "IMG_6"},
         {"id": 3, "idx": 3, "src": "/images/IMG_3.webp", "alt": "IMG_3"},
         {"id": 4, "idx": 4, "src": "/images/IMG_4.webp", "alt": "IMG_4"},
         {"id": 2, "idx": 2, "src": "/images/IMG_2.webp", "alt": "IMG_2"},
