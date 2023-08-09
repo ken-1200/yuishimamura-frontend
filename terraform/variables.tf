@@ -10,6 +10,8 @@ variable "main_domain" {}
 
 variable "zone_id" {}
 
+variable "gsc_value" {}
+
 locals {
   s3_bucket_name  = "${var.env_prefix}-yuishimamura-website-bucket-cf"
 }

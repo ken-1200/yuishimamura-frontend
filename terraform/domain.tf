@@ -75,3 +75,18 @@ resource "aws_acm_certificate_validation" "main-domain-api-cert" {
   certificate_arn         = aws_acm_certificate.main-domain-api-cert.arn
   validation_record_fqdns = [for record in aws_route53_record.main-domain-api-cert-validation: record.fqdn]
 }
+
+###################################################
+## google-site-verification TXTレコード用
+###################################################
+
+resource "aws_route53_record" "google_search_console_verification" {
+  zone_id = "${var.zone_id}"
+  name    = "${var.main_domain}"
+  type    = "TXT"
+  ttl     = 3600
+
+  records = [
+    "${var.gsc_value}",
+  ]
+}
