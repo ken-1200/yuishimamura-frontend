@@ -57,7 +57,8 @@ sequenceDiagram
 
     User ->> Frontend: 画像追加要求
     Frontend ->> Backend: 画像アップロード要求
-    Backend ->> S3: 画像アップロード
+    Backend ->> Backend: 画像変換（JPEG, etc. → WebP）
+    Backend ->> S3: 変換済み画像アップロード
     S3 -->> Backend: アップロード成功応答
     Backend -->> Frontend: 画像追加成功応答
     Frontend ->> User: 画像追加成功メッセージ
