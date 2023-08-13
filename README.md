@@ -4,9 +4,9 @@
 | --------------- | ------------------ |
 | Node            | v18.16.1           |
 | Package manager | npm v9.7.2         |
-| Build tools     | vite v1.1.1        |
-| Framework       | react + typeScript |
-| CSS             | tailWind + emotion |
+| Build tools     | Vite v1.1.1        |
+| Framework       | React + TypeScript |
+| CSS             | TailWind + Emotion |
 
 ※ Node のパッケージマネージャーは volta を推奨
 
