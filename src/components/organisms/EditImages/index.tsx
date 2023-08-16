@@ -17,7 +17,7 @@ import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { Link } from 'react-router-dom';
 
-import { useDeleteUpdateImages } from '../../../hooks/useDeleteUpdateImages';
+import { useUpdateDeleteImages } from '../../../hooks/useUpdateDeleteImages';
 import Head from '../../atoms/Head';
 import ImageItem from '../../atoms/ImageItem';
 import SortableItem from '../../atoms/SortableItem';
@@ -36,7 +36,7 @@ const EditImages = () => {
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const { deleteUpdateImages } = useDeleteUpdateImages();
+  const { updateDeleteImages } = useUpdateDeleteImages();
 
   // error alert button
   const openErrorAlert = () => {
@@ -83,10 +83,10 @@ const EditImages = () => {
   };
 
   // delete/update API
-  const deleteUpdate = useCallback(
+  const updateDelete = useCallback(
     async (images_path: Array<string>, images_json: { images: Array<Illustration> }) => {
       try {
-        await deleteUpdateImages({
+        await updateDeleteImages({
           images_path,
           images_json,
         });
@@ -96,7 +96,7 @@ const EditImages = () => {
         openErrorAlert();
       }
     },
-    [deleteUpdateImages],
+    [updateDeleteImages],
   );
 
   // save button
@@ -107,7 +107,7 @@ const EditImages = () => {
     const srcArray = checkedIllustrations.map((item) => item.src);
     const imagesJson = { images: illustrations };
 
-    await deleteUpdate(srcArray, imagesJson);
+    await updateDelete(srcArray, imagesJson);
     setIsLoading(false);
     setCheckedIllustrations([]);
     loadingIllustrations();
