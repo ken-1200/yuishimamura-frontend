@@ -42,6 +42,7 @@ make deploy-s3
 # deploy to cloudfront
 make deploy-cf
 ```
+
 ## Sequence
 
 ```mermaid
