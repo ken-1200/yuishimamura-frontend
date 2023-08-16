@@ -12,6 +12,10 @@ variable "zone_id" {}
 
 variable "gsc_value" {}
 
+variable "api_key_name" {}
+
+variable "api_key_value" {}
+
 locals {
   s3_bucket_name  = "${var.env_prefix}-yuishimamura-website-bucket-cf"
 }
