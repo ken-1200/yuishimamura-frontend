@@ -6,7 +6,7 @@ function handler(event) {
 
   if (uri.endsWith('/upload_images') || uri.endsWith('/edit_images')) {
     // アクセス許可するIPを設定
-    var IP_WHITE_LIST = ['126.126.169.113', '60.119.103.50'];
+    var IP_WHITE_LIST = ['126.227.148.10', '60.119.103.50'];
     // クライアントIPが、アクセス許可するIPに含まれていればtrueを返す
     var isPermittedIp = IP_WHITE_LIST.includes(clientIP);
 
