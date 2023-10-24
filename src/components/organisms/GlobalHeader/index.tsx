@@ -14,9 +14,9 @@ const GlobalHeader = () => {
         <div className="flex lg:flex-1">
           <Link
             to="/"
-            className="my-4 text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"
+            className="my-4 text-3xl font-bold leading-7 text-gray-900 sm:truncate sm:text-4xl sm:tracking-tight"
           >
-            Yui Shimamura Illustrations
+            ゆい イラストサイト
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -30,16 +30,16 @@ const GlobalHeader = () => {
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link
-            to="/illustrations"
+            to="/gallery"
             className="m-4 uppercase text-2xl font-bold text-[#aaa] transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-[#333] duration-300"
           >
-            Illustrations
+            ギャラリー
           </Link>
           <Link
-            to="/about"
+            to="/profile"
             className="m-4 uppercase text-2xl font-bold text-[#aaa] transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-[#333] duration-300"
           >
-            About
+            プロフィール
           </Link>
           <a
             href="https://suzuri.jp/yuishimamura/"
@@ -47,7 +47,7 @@ const GlobalHeader = () => {
             rel="noopener noreferrer"
             className="m-4 uppercase text-2xl font-bold text-[#aaa] transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-[#333] duration-300"
           >
-            Suzuri
+            スズリ
           </a>
           <a
             href="https://line.me/S/sticker/23392341/?lang=ja&utm_source=gnsh_stickerDetail"
@@ -55,10 +55,10 @@ const GlobalHeader = () => {
             rel="noopener noreferrer"
             className="m-4 uppercase text-2xl font-bold text-[#aaa] transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-[#333] duration-300"
           >
-            LINE stamp
+            LINEスタンプ
           </a>
           <a
-            href="https://www.instagram.com/yui_illustrations/"
+            href="https://www.instagram.com/yuishimamura/"
             target="_blank"
             rel="noopener noreferrer"
             className="m-4 uppercase text-2xl font-bold text-[#aaa] transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-[#333] duration-300"
@@ -92,18 +92,18 @@ const GlobalHeader = () => {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 <Link
-                  to="/illustrations"
+                  to="/gallery"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Illustrations
+                  ギャラリー
                 </Link>
                 <Link
-                  to="/about"
+                  to="/profile"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  About
+                  プロフィール
                 </Link>
                 <a
                   href="https://suzuri.jp/yuishimamura/"
@@ -111,7 +111,7 @@ const GlobalHeader = () => {
                   rel="noopener noreferrer"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Suzuri
+                  スズリ
                 </a>
                 <a
                   href="https://line.me/S/sticker/23392341/?lang=ja&utm_source=gnsh_stickerDetail"
@@ -119,10 +119,10 @@ const GlobalHeader = () => {
                   rel="noopener noreferrer"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  LINE stamp
+                  LINEスタンプ
                 </a>
                 <a
-                  href="https://www.instagram.com/yui_illustrations/"
+                  href="https://www.instagram.com/yuishimamura/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-lg font-semibold leading-7 text-gray-900 hover:bg-gray-50"

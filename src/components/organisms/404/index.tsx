@@ -10,7 +10,7 @@ const PageNotFound = () => {
       <Head
         title="404 | NotFound"
         description="Page NotFound"
-        keywords="Yui Shimamura, イラストレーション, イラスト, 作品集"
+        keywords="ゆい, しまむらゆい, しまむら, Yui Shimamura, イラストレーター, イラスト, NotFound, 404, ページが見つかりません"
         ogTitle="404 | NotFound"
         ogDescription="Page NotFound"
         ogType="website"

@@ -9,8 +9,8 @@ import GlobalFooter from './components/organisms/GlobalFooter';
 import GlobalHeader from './components/organisms/GlobalHeader';
 
 const TopPage = lazy(async () => await import('./components/organisms/TopPage'));
-const IllustrationPage = lazy(async () => await import('./components/organisms/IllustrationPage'));
-const About = lazy(async () => await import('./components/organisms/About'));
+const Gallery = lazy(async () => await import('./components/organisms/Gallery'));
+const Profile = lazy(async () => await import('./components/organisms/Profile'));
 const UploadImages = lazy(async () => await import('./components/organisms/UploadImages'));
 const EditImages = lazy(async () => await import('./components/organisms/EditImages'));
 const PageNotFound = lazy(async () => await import('./components/organisms/404'));
@@ -20,8 +20,8 @@ const Root = () => {
   const currentPath = location.pathname;
   const routes = [
     <Route key="top_page" path="/" element={<TopPage />} />,
-    <Route key="illustrations" path="/illustrations" element={<IllustrationPage />} />,
-    <Route key="about" path="/about" element={<About />} />,
+    <Route key="gallery" path="/gallery" element={<Gallery />} />,
+    <Route key="profile" path="/profile" element={<Profile />} />,
     <Route key="upload_images" path="/upload_images" element={<UploadImages />} />,
     <Route key="edit_images" path="/edit_images" element={<EditImages />} />,
     <Route key="not_found" path="*" element={<PageNotFound />} />,
@@ -35,7 +35,7 @@ const Root = () => {
   };
 
   useEffect(() => {
-    const reservedPathName = ['/illustrations', '/upload_images', '/edit_images'];
+    const reservedPathName = ['/gallery', '/upload_images', '/edit_images'];
 
     window.addEventListener('resize', handleWindowHeightResize);
 

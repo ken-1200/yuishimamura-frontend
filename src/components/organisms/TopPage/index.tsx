@@ -7,10 +7,10 @@ const TopPage = () => {
     <>
       <Head
         title="Top | Yui Shimamura Illustration Site"
-        description="Yui Shimamuraは、独自の芸術スタイルと創造的なアプローチで知られる才能あるイラストレーターです。彼女の魅力的なイラストレーションを探索し、想像力と美しさに満ちた世界に没入しましょう。Yuiの作品のインスピレーションやアーティストの旅を知ることができます。最新のイラストに関する情報を入手するには、Instagramでフォローしてください。公式のYui Shimamura Illustration Siteを訪れて、彼女のポートフォリオをご覧いただけます。"
-        keywords="Yui Shimamura, イラストレーション, イラスト, 作品集"
+        description="Yui Shimamura Illustration Siteのトップページです。最新情報は、Instagramをチェック&フォローしてください。"
+        keywords="ゆい, しまむらゆい, しまむら, Yui Shimamura, イラストレーター, イラスト, オーダーイラスト, 作品集"
         ogTitle="Top | Yui Shimamura Illustration Site"
-        ogDescription="Yui Shimamuraは、独自の芸術スタイルと創造的なアプローチで知られる才能あるイラストレーターです。彼女の魅力的なイラストレーションを探索し、想像力と美しさに満ちた世界に没入しましょう。Yuiの作品のインスピレーションやアーティストの旅を知ることができます。最新のイラストに関する情報を入手するには、Instagramでフォローしてください。公式のYui Shimamura Illustration Siteを訪れて、彼女のポートフォリオをご覧いただけます。"
+        ogDescription="Yui Shimamura Illustration Siteのトップページです。最新情報は、Instagramをチェック&フォローしてください。"
         ogType="website"
         ogUrl="https://yuishimamura.com/"
         ogImage="https://yuishimamura.com/public/images/og_image.webp"
