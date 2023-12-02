@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { UpdateDeleteImageApi } from '../apis/UpdateDeleteImages';
 
 const updateDeleteImages = async (params: {

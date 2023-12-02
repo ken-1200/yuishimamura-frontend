@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { UploadImageApi } from '../apis/UploadImages';
 
 const uploadImages = async (images: {
