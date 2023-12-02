@@ -1,6 +1,6 @@
 import { useState, memo, useEffect } from 'react';
 
-import { HEAD_TITLE_GALLERY, HEAD_DESCRIPTION_GALLERY, HEAD_KEYWORDS_GALLERY} from '../../../constants';
+import { HEAD_TITLE_GALLERY, HEAD_DESCRIPTION_GALLERY, HEAD_KEYWORDS_GALLERY } from '../../../constants';
 import Head from '../../atoms/Head';
 import ImagePreview from '../../atoms/ImagePreview';
 

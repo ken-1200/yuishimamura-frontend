@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import { HEAD_TITLE_TOP, HEAD_DESCRIPTION_TOP, HEAD_KEYWORDS_TOP} from '../../../constants';
+import { HEAD_TITLE_TOP, HEAD_DESCRIPTION_TOP, HEAD_KEYWORDS_TOP } from '../../../constants';
 import Head from '../../atoms/Head';
 
 const TopPage = () => {

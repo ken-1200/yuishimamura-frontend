@@ -5,7 +5,11 @@ import { XMarkIcon } from '@heroicons/react/24/solid';
 import { PhotoIcon } from '@heroicons/react/24/solid';
 import { Link } from 'react-router-dom';
 
-import { HEAD_TITLE_UPLOAD_IMAGES, HEAD_DESCRIPTION_UPLOAD_IMAGES, HEAD_KEYWORDS_UPLOAD_IMAGES} from '../../../constants';
+import {
+  HEAD_TITLE_UPLOAD_IMAGES,
+  HEAD_DESCRIPTION_UPLOAD_IMAGES,
+  HEAD_KEYWORDS_UPLOAD_IMAGES,
+} from '../../../constants';
 import { useUploadImages } from '../../../hooks/useUploadImages';
 import Head from '../../atoms/Head';
 import ImagePreview from '../../atoms/ImagePreview';
@@ -179,106 +183,119 @@ const UploadImages = () => {
         ogTitle={HEAD_TITLE_UPLOAD_IMAGES}
         ogDescription={HEAD_DESCRIPTION_UPLOAD_IMAGES}
       />
-      <form onSubmit={(e) => handleOnSubmit(e)}>
-        <div className="space-y-12">
-          <div className="border-b border-gray-900/10 pb-12">
-            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              <div className="col-span-full">
-                <label
-                  htmlFor="upload-photos"
-                  className="grid grid-flow-col text-sm font-medium leading-6 text-gray-900"
-                >
-                  <span className="text-start">Upload photos</span>
-                  <span className="text-end">
-                    Limit photo size {imageSizeKB} / {maxImageSizeKB}KB
-                  </span>
-                </label>
-                <div
-                  onDragEnter={onDragEnter}
-                  onDragLeave={onDragLeave}
-                  onDragOver={(e) => e.preventDefault()}
-                  onDrop={onDrop}
-                  className={`mt-2 flex justify-center rounded-lg border border-dashed px-6 py-28 ${
-                    isDragActive ? 'bg-sky-50 border-sky-400' : 'border-gray-900/25'
-                  }`}
-                >
-                  <div className="text-center">
-                    <PhotoIcon className="mx-auto h-12 w-12 text-gray-300" aria-hidden="true" />
-                    <div className="mt-4 flex text-sm leading-6 text-gray-600">
+      <div className="bg-gray-100">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto py-16 sm:py-24 lg:max-w-none lg:py-32">
+            <form onSubmit={(e) => handleOnSubmit(e)}>
+              <div className="space-y-12">
+                <div className="border-b border-gray-900/10 pb-12">
+                  <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                    <div className="col-span-full">
                       <label
-                        htmlFor="file-upload"
-                        className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none hover:text-indigo-500"
+                        htmlFor="upload-photos"
+                        className="grid grid-flow-col text-sm font-medium leading-6 text-gray-900"
                       >
-                        <span>Upload a file</span>
-                        <input
-                          id="file-upload"
-                          name="file-upload"
-                          type="file"
-                          accept="image/*,.png,.jpg,.jpeg,.gif"
-                          className="sr-only"
-                          onChange={(e) => handleOnAddImage(e)}
-                        />
+                        <span className="text-start">画像をアップロード</span>
+                        <span className="text-end">
+                          {imageSizeKB} / {maxImageSizeKB}KB (最大5MB)
+                        </span>
                       </label>
-                      <p className="pl-1">or drag and drop</p>
+                      <div
+                        onDragEnter={onDragEnter}
+                        onDragLeave={onDragLeave}
+                        onDragOver={(e) => e.preventDefault()}
+                        onDrop={onDrop}
+                        className={`mt-2 flex justify-center rounded-lg border border-dashed px-6 py-28 ${
+                          isDragActive ? 'bg-sky-50 border-sky-400' : 'border-gray-900/25'
+                        }`}
+                      >
+                        <div className="text-center">
+                          <PhotoIcon className="mx-auto h-12 w-12 text-gray-300" aria-hidden="true" />
+                          <div className="mt-4 flex text-sm leading-6 text-gray-600">
+                            <label
+                              htmlFor="file-upload"
+                              className="relative cursor-pointer rounded-md font-semibold text-indigo-600 focus-within:outline-none hover:text-indigo-500"
+                            >
+                              <span>ファイルをアップロード</span>
+                              <input
+                                id="file-upload"
+                                name="file-upload"
+                                type="file"
+                                accept="image/*,.png,.jpg,.jpeg,.gif"
+                                className="sr-only"
+                                onChange={(e) => handleOnAddImage(e)}
+                              />
+                            </label>
+                            <p className="pl-1">or ドラッグ&ドロップ</p>
+                          </div>
+                          <p className="text-xs leading-5 text-gray-600">画像形式 PNG, JPG, JPEG, GIF</p>
+                        </div>
+                      </div>
+
+                      <div className="pt-4 grid grid-rows-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
+                        {images.map((image, i) => (
+                          <div key={i} className="relative">
+                            <XMarkIcon
+                              className="absolute top-0 right-0 h-11 w-11 bg-gray-400/50 text-white ml-auto cursor-pointer rounded-lg z-10"
+                              aria-hidden="true"
+                              onClick={() => handleOnRemoveImage(i)}
+                            />
+                            <ImagePreview src={URL.createObjectURL(image)} alt={String(i)} />
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                    <p className="text-xs leading-5 text-gray-600">PNG, JPG, JPEG, GIF up to 5MB</p>
                   </div>
                 </div>
-
-                <div className="pt-4 grid grid-rows-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
-                  {images.map((image, i) => (
-                    <div key={i} className="relative">
-                      <XMarkIcon
-                        className="absolute top-0 right-0 h-11 w-11 bg-gray-400/50 text-white ml-auto cursor-pointer rounded"
-                        aria-hidden="true"
-                        onClick={() => handleOnRemoveImage(i)}
-                      />
-                      <ImagePreview src={URL.createObjectURL(image)} alt={String(i)} />
-                    </div>
-                  ))}
-                </div>
               </div>
-            </div>
+
+              <div className="mt-6 flex items-center justify-end gap-x-6">
+                <Link to="/edit_images" className="text-sm font-semibold leading-6 text-gray-900">
+                  編集ぺージへ
+                </Link>
+                <button
+                  type="button"
+                  className="text-sm font-semibold leading-6 text-gray-900"
+                  onClick={() => handleOnCancelImages()}
+                  disabled={images.length === 0 || imageSizeKB > maxImageSizeKB}
+                >
+                  キャンセル
+                </button>
+                <button
+                  type="submit"
+                  className="inline-flex items-center px-3 py-2 text-sm font-semibold leading-6 text-white transition duration-150 ease-in-out bg-indigo-600 rounded-md  shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
+                  disabled={images.length === 0 || imageSizeKB > maxImageSizeKB}
+                >
+                  {isLoading ? (
+                    <svg
+                      className="w-5 h-5 mr-1 ml-1 text-white animate-spin"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                  ) : (
+                    '送信'
+                  )}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
-
-        <div className="mt-6 flex items-center justify-end gap-x-6">
-          <Link to="/edit_images" className="text-sm font-semibold leading-6 text-gray-900">
-            To EditPage
-          </Link>
-          <button
-            type="button"
-            className="text-sm font-semibold leading-6 text-gray-900"
-            onClick={() => handleOnCancelImages()}
-            disabled={images.length === 0 || imageSizeKB > maxImageSizeKB}
-          >
-            Cancel
-          </button>
-          <button
-            type="submit"
-            className="inline-flex items-center px-3 py-2 text-sm font-semibold leading-6 text-white transition duration-150 ease-in-out bg-indigo-600 rounded-md  shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
-            disabled={images.length === 0 || imageSizeKB > maxImageSizeKB}
-          >
-            {isLoading ? (
-              <svg
-                className="w-5 h-5 mr-1 ml-1 text-white animate-spin"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                ></path>
-              </svg>
-            ) : (
-              'Save'
-            )}
-          </button>
-        </div>
-      </form>
+      </div>
       {isSuccess ? (
         <div className="relative isolate flex items-center gap-x-6 overflow-hidden bg-[#f0fdf4] px-6 py-4 mt-10">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">

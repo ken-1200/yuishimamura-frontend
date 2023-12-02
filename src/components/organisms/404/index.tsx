@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import { Link } from 'react-router-dom';
 
-import { HEAD_TITLE_NOT_FOUND, HEAD_DESCRIPTION_NOT_FOUND, HEAD_KEYWORDS_NOT_FOUND} from '../../../constants';
+import { HEAD_TITLE_NOT_FOUND, HEAD_DESCRIPTION_NOT_FOUND, HEAD_KEYWORDS_NOT_FOUND } from '../../../constants';
 import Head from '../../atoms/Head';
 
 const PageNotFound = () => {

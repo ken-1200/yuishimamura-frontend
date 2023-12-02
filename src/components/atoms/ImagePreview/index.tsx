@@ -22,7 +22,7 @@ const ImagePreview = ({ src, alt }: Props) => {
   return (
     <>
       <img
-        className="rounded-lg"
+        className="rounded-lg hover:opacity-75"
         loading="lazy"
         onContextMenu={(e) => e.preventDefault()}
         onMouseDown={(e) => e.preventDefault()}

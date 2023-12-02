@@ -32,6 +32,7 @@ const ImageItem = forwardRef<HTMLDivElement, Props>(
   ({ item, checkedIllustrations, handleCheckboxChange, isOpacityEnabled, isDragging, style, ...props }, ref) => {
     return (
       <div
+        className="hover:opacity-75"
         ref={ref}
         css={css`
           cursor: ${isDragging ? 'grabbing' : 'grab'};

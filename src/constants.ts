@@ -13,8 +13,12 @@ export const HEAD_DESCRIPTION_UPLOAD_IMAGES = 'ギャラリー追加';
 export const HEAD_DESCRIPTION_NOT_FOUND = '404 Not Found';
 
 export const HEAD_KEYWORDS_TOP = 'ゆい,イラスト,ゆいのイラスト,ゆいのイラストサイト,イラストレーター,オーダーイラスト';
-export const HEAD_KEYWORDS_PROFILE = 'ゆい,イラスト,ゆいのイラスト,ゆいのイラストサイト,イラストレーター,オーダーイラスト,プロフィール';
-export const HEAD_KEYWORDS_GALLERY = 'ゆい,イラスト,ゆいのイラスト,ゆいのイラストサイト,イラストレーター,オーダーイラスト,ギャラリー';
-export const HEAD_KEYWORDS_EDIT_IMAGES = 'ゆい,イラスト,ゆいのイラスト,ゆいのイラストサイト,イラストレーター,オーダーイラスト,ギャラリー編集';
-export const HEAD_KEYWORDS_UPLOAD_IMAGES = 'ゆい,イラスト,ゆいのイラスト,ゆいのイラストサイト,イラストレーター,オーダーイラスト,ギャラリー追加';
+export const HEAD_KEYWORDS_PROFILE =
+  'ゆい,イラスト,ゆいのイラスト,ゆいのイラストサイト,イラストレーター,オーダーイラスト,プロフィール';
+export const HEAD_KEYWORDS_GALLERY =
+  'ゆい,イラスト,ゆいのイラスト,ゆいのイラストサイト,イラストレーター,オーダーイラスト,ギャラリー';
+export const HEAD_KEYWORDS_EDIT_IMAGES =
+  'ゆい,イラスト,ゆいのイラスト,ゆいのイラストサイト,イラストレーター,オーダーイラスト,ギャラリー編集';
+export const HEAD_KEYWORDS_UPLOAD_IMAGES =
+  'ゆい,イラスト,ゆいのイラスト,ゆいのイラストサイト,イラストレーター,オーダーイラスト,ギャラリー追加';
 export const HEAD_KEYWORDS_NOT_FOUND = '404 Not Found';

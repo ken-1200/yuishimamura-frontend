@@ -2,7 +2,7 @@ import { lazy, Suspense, useState, useEffect } from 'react';
 
 import { css } from '@emotion/react';
 import { HelmetProvider } from 'react-helmet-async';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 
 import GlobalFooter from './components/organisms/GlobalFooter';
 import GlobalHeader from './components/organisms/GlobalHeader';
@@ -21,6 +21,7 @@ const Root = () => {
     <Route key="top_page" path="/" element={<TopPage />} />,
     <Route key="gallery" path="/gallery" element={<Gallery />} />,
     <Route key="profile" path="/profile" element={<Profile />} />,
+    <Route key="admin" path="/admin" element={<Navigate replace to="/upload_images" />} />,
     <Route key="upload_images" path="/upload_images" element={<UploadImages />} />,
     <Route key="edit_images" path="/edit_images" element={<EditImages />} />,
     <Route key="not_found" path="*" element={<PageNotFound />} />,

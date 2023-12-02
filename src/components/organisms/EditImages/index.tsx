@@ -17,7 +17,7 @@ import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { Link } from 'react-router-dom';
 
-import { HEAD_TITLE_EDIT_IMAGES, HEAD_DESCRIPTION_EDIT_IMAGES, HEAD_KEYWORDS_EDIT_IMAGES} from '../../../constants';
+import { HEAD_TITLE_EDIT_IMAGES, HEAD_DESCRIPTION_EDIT_IMAGES, HEAD_KEYWORDS_EDIT_IMAGES } from '../../../constants';
 import { useUpdateDeleteImages } from '../../../hooks/useUpdateDeleteImages';
 import Head from '../../atoms/Head';
 import ImageItem from '../../atoms/ImageItem';

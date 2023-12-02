@@ -1,6 +1,6 @@
 import { memo } from 'react';
 
-import { HEAD_TITLE_PROFILE, HEAD_DESCRIPTION_PROFILE, HEAD_KEYWORDS_PROFILE} from '../../../constants';
+import { HEAD_TITLE_PROFILE, HEAD_DESCRIPTION_PROFILE, HEAD_KEYWORDS_PROFILE } from '../../../constants';
 import Head from '../../atoms/Head';
 
 const Profile = () => {
