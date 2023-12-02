@@ -34,8 +34,14 @@ apply-wp:
 	AWS_PROFILE=${AWS_PROFILE} ${TF_INIT}
 	AWS_PROFILE=${AWS_PROFILE} ${TF_APPLY}
 
+.PHONY: lint
+lint:
+	npm run lint:fix
+	npm run lint:write
+
 .PHONY: deploy-s3
 deploy-s3:
+	@make lint
 	rm -rf dist/
 	npm run build
 	aws s3 sync dist/ ${DEPLOY_BUCKET} --delete --profile ${AWS_PROFILE}
