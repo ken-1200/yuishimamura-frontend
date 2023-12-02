@@ -2,23 +2,18 @@ import { memo } from 'react';
 
 import { Link } from 'react-router-dom';
 
+import { HEAD_TITLE_NOT_FOUND, HEAD_DESCRIPTION_NOT_FOUND, HEAD_KEYWORDS_NOT_FOUND} from '../../../constants';
 import Head from '../../atoms/Head';
 
 const PageNotFound = () => {
   return (
     <>
       <Head
-        title="404 | NotFound"
-        description="Page NotFound"
-        keywords="ゆい, しまむらゆい, しまむら, Yui Shimamura, イラストレーター, イラスト, NotFound, 404, ページが見つかりません"
-        ogTitle="404 | NotFound"
-        ogDescription="Page NotFound"
-        ogType="website"
-        ogUrl="https://yuishimamura.com/"
-        ogImage="https://yuishimamura.com/public/images/og_image.webp"
-        ogImageHeight="200"
-        ogImageWidth="200"
-        ogSiteName="Yui Shimamura Illustration Site"
+        title={HEAD_TITLE_NOT_FOUND}
+        description={HEAD_DESCRIPTION_NOT_FOUND}
+        keywords={HEAD_KEYWORDS_NOT_FOUND}
+        ogTitle={HEAD_TITLE_NOT_FOUND}
+        ogDescription={HEAD_DESCRIPTION_NOT_FOUND}
       />
       <div className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
         <div className="text-center">

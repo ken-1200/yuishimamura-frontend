@@ -17,6 +17,7 @@ import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { Link } from 'react-router-dom';
 
+import { HEAD_TITLE_EDIT_IMAGES, HEAD_DESCRIPTION_EDIT_IMAGES, HEAD_KEYWORDS_EDIT_IMAGES} from '../../../constants';
 import { useUpdateDeleteImages } from '../../../hooks/useUpdateDeleteImages';
 import Head from '../../atoms/Head';
 import ImageItem from '../../atoms/ImageItem';
@@ -171,17 +172,11 @@ const EditImages = () => {
   return (
     <>
       <Head
-        title="EditImages | Yui Shimamura Illustration Site"
-        description=""
-        keywords=""
-        ogTitle="EditImages | Yui Shimamura Illustration Site"
-        ogDescription=""
-        ogType="website"
-        ogUrl="https://yuishimamura.com/edit_images/"
-        ogImage="https://yuishimamura.com/public/images/og_image.webp"
-        ogImageHeight="200"
-        ogImageWidth="200"
-        ogSiteName="Yui Shimamura Illustration Site"
+        title={HEAD_TITLE_EDIT_IMAGES}
+        description={HEAD_DESCRIPTION_EDIT_IMAGES}
+        keywords={HEAD_KEYWORDS_EDIT_IMAGES}
+        ogTitle={HEAD_TITLE_EDIT_IMAGES}
+        ogDescription={HEAD_DESCRIPTION_EDIT_IMAGES}
       />
       <div className="mt-20">
         <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Edit Illustrations</h2>
