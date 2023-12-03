@@ -4,9 +4,9 @@ function handler(event) {
   var headers = request.headers;
   var uri = request.uri;
 
-  if (uri.endsWith('/upload_images') || uri.endsWith('/edit_images')) {
+  if (uri.endsWith('/admin') || uri.endsWith('/upload_images') || uri.endsWith('/edit_images')) {
     // アクセス許可するIPを設定
-    var IP_WHITE_LIST = ['126.40.32.124', '60.119.103.50'];
+    var IP_WHITE_LIST = ['126.126.243.50', '60.119.103.50'];
     // クライアントIPが、アクセス許可するIPに含まれていればtrueを返す
     var isPermittedIp = IP_WHITE_LIST.includes(clientIP);
 
