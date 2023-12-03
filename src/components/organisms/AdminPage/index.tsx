@@ -2,11 +2,7 @@ import { memo } from 'react';
 
 import { Link } from 'react-router-dom';
 
-import {
-  HEAD_TITLE_ADMIN,
-  HEAD_DESCRIPTION_ADMIN,
-  HEAD_KEYWORDS_ADMIN,
-} from '../../../constants';
+import { HEAD_TITLE_ADMIN, HEAD_DESCRIPTION_ADMIN, HEAD_KEYWORDS_ADMIN } from '../../../constants';
 import Head from '../../atoms/Head';
 
 const AdminPage = () => {
