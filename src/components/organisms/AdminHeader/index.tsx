@@ -8,7 +8,7 @@ const AdminHeader = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="py-6 px-4 sm:p-6 md:px-8">
+    <header className="py-6 px-4">
       <nav className="mx-auto flex items-center justify-between py-6 px-4 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link to="/admin" className="my-4 text-3xl font-bold leading-7 text-gray-900">
