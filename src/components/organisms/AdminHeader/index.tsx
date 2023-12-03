@@ -12,7 +12,7 @@ const AdminHeader = () => {
       <nav className="mx-auto flex items-center justify-between py-6 px-4 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <Link to="/admin" className="my-4 text-3xl font-bold leading-7 text-gray-900">
-            🦕 管理画面
+            ゆい イラストサイト管理画面
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -30,22 +30,22 @@ const AdminHeader = () => {
             to="/upload_images"
             className="m-4 uppercase text-2xl font-bold text-[#aaa] transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-[#333] duration-300"
           >
-            画像アップロード
+            🗂️アップロード
           </Link>
           <Link
             to="/edit_images"
             className="m-4 uppercase text-2xl font-bold text-[#aaa] transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-[#333] duration-300"
           >
-            画像編集
+            🖼️ギャラリー編集
           </Link>
         </div>
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white py-6 px-4 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-          <div className="mx-auto flex items-center justify-between py-6 px-4 lg:px-8">
+          <div className="mx-auto flex items-center justify-between py-6 px-4 lg:px-8 border-b-2 border-b-cyan-600">
             <div className="flex lg:flex-1">
-              <div className="my-4 text-3xl font-bold leading-7 text-gray-900">🦕 管理画面</div>
+              <div className="my-4 text-3xl font-bold leading-7 text-gray-900">管理メニュー</div>
             </div>
             <div className="flex lg:hidden">
               <span className="-m-1.5 p-1.5" />
@@ -66,14 +66,14 @@ const AdminHeader = () => {
                   className="-mx-3 block rounded-lg px-4 py-3 mb-6 text-2xl font-bold leading-8 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  画像アップロード
+                  🗂️ アップロード
                 </Link>
                 <Link
                   to="/edit_images"
                   className="-mx-3 block rounded-lg px-4 py-3 mb-6 text-2xl font-bold leading-8 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  画像編集
+                  🖼️ ギャラリー編集
                 </Link>
               </div>
             </div>

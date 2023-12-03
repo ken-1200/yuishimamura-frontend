@@ -15,7 +15,6 @@ import { arrayMove, SortableContext, rectSortingStrategy } from '@dnd-kit/sortab
 import { css } from '@emotion/react';
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import { XMarkIcon } from '@heroicons/react/24/solid';
-import { Link } from 'react-router-dom';
 
 import { HEAD_TITLE_EDIT_IMAGES, HEAD_DESCRIPTION_EDIT_IMAGES, HEAD_KEYWORDS_EDIT_IMAGES } from '../../../constants';
 import { useUpdateDeleteImages } from '../../../hooks/useUpdateDeleteImages';
@@ -33,6 +32,9 @@ type Illustration = {
 const EditImages = () => {
   const [illustrations, setIllustrations] = useState<Array<Illustration>>([]);
   const [checkedIllustrations, setCheckedIllustrations] = useState<Array<Illustration>>([]);
+  // for drag overlay
+  const [activeItem, setActiveItem] = useState<Illustration>();
+  const [isChanged, setIsChanged] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -81,6 +83,7 @@ const EditImages = () => {
   const handleOnCancelImages = () => {
     setCheckedIllustrations([]);
     loadingIllustrations();
+    setIsChanged(false);
   };
 
   // delete/update API
@@ -112,10 +115,8 @@ const EditImages = () => {
     setIsLoading(false);
     setCheckedIllustrations([]);
     loadingIllustrations();
+    setIsChanged(false);
   };
-
-  // for drag overlay
-  const [activeItem, setActiveItem] = useState<Illustration>();
 
   // for input methods detection
   const sensors = useSensors(
@@ -157,6 +158,7 @@ const EditImages = () => {
 
     if (activeIndex !== overIndex) {
       setIllustrations((prev) => arrayMove<Illustration>(prev, activeIndex, overIndex));
+      setIsChanged(true);
     }
     setActiveItem(undefined);
   };
@@ -179,12 +181,12 @@ const EditImages = () => {
         ogDescription={HEAD_DESCRIPTION_EDIT_IMAGES}
       />
       <div className="mt-20">
-        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Edit Illustrations</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">ギャラリー編集</h2>
         {isSuccess ? (
           <div className="relative isolate flex items-center gap-x-6 overflow-hidden bg-[#f0fdf4] px-6 py-4 mt-10">
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
               <CheckCircleIcon className="h-7 w-7 text-[#4afa8d]" aria-hidden="true" />
-              <p className="text-xl font-bold text-[#166534]">Successfully deleted / updated</p>
+              <p className="text-xl font-bold text-[#166534]">正常に削除・更新されました。</p>
             </div>
             <div className="flex flex-1 justify-end">
               <button
@@ -201,7 +203,7 @@ const EditImages = () => {
           <div className="relative isolate flex items-center gap-x-6 overflow-hidden bg-[#FEF2F2] px-6 py-4 mt-10">
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
               <CheckCircleIcon className="h-7 w-7 text-[#f8b9b9]" aria-hidden="true" />
-              <p className="text-xl font-bold text-[#991B1B]">There were errors with your submission</p>
+              <p className="text-xl font-bold text-[#991B1B]">送信内容にエラーがありました。</p>
             </div>
             <div className="flex flex-1 justify-end">
               <button
@@ -214,21 +216,19 @@ const EditImages = () => {
             </div>
           </div>
         ) : null}
-        <div className="mt-6 mb-6 flex items-center justify-start gap-x-6">
-          <Link to="/upload_images" className="text-sm font-semibold leading-6 text-gray-900">
-            To UploadPage
-          </Link>
+        <div className="py-6 flex items-center justify-end gap-x-6">
           <button
             type="button"
             className="text-sm font-semibold leading-6 text-gray-900"
             onClick={() => handleOnCancelImages()}
           >
-            Reset
+            リセット
           </button>
           <button
             type="button"
-            className="px-3 py-2 text-sm text-white font-semibold leading-6 bg-indigo-600 rounded-md  shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="px-3 py-2 text-sm text-white font-semibold leading-6 bg-indigo-600 rounded-md shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
             onClick={(e) => handleOnSubmit(e)}
+            disabled={!isChanged && checkedIllustrations.length === 0}
           >
             {isLoading ? (
               <svg
@@ -245,7 +245,7 @@ const EditImages = () => {
                 ></path>
               </svg>
             ) : (
-              'Save'
+              '保存'
             )}
           </button>
         </div>

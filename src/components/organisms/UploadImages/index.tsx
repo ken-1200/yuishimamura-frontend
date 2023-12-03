@@ -182,9 +182,9 @@ const UploadImages = () => {
         ogTitle={HEAD_TITLE_UPLOAD_IMAGES}
         ogDescription={HEAD_DESCRIPTION_UPLOAD_IMAGES}
       />
-      <div className="bg-white">
+      <div className="mt-20">
+        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">アップロード</h2>
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-semibold text-black mb-8">画像アップロード</h1>
           <div className="mx-auto py-16 sm:py-24 lg:max-w-none lg:py-32">
             <form onSubmit={(e) => handleOnSubmit(e)}>
               <div className="space-y-12">
@@ -297,7 +297,7 @@ const UploadImages = () => {
         <div className="relative isolate flex items-center gap-x-6 overflow-hidden bg-[#f0fdf4] px-6 py-4 mt-10">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <CheckCircleIcon className="h-7 w-7 text-[#4afa8d]" aria-hidden="true" />
-            <p className="text-xl font-bold text-[#166534]">Successfully uploaded</p>
+            <p className="text-xl font-bold text-[#166534]">正常にアップロードされました。</p>
           </div>
           <div className="flex flex-1 justify-end">
             <button
@@ -314,7 +314,7 @@ const UploadImages = () => {
         <div className="relative isolate flex items-center gap-x-6 overflow-hidden bg-[#FEF2F2] px-6 py-4 mt-10">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <CheckCircleIcon className="h-7 w-7 text-[#f8b9b9]" aria-hidden="true" />
-            <p className="text-xl font-bold text-[#991B1B]">There were errors with your submission</p>
+            <p className="text-xl font-bold text-[#991B1B]">送信内容にエラーがありました。</p>
           </div>
           <div className="flex flex-1 justify-end">
             <button
