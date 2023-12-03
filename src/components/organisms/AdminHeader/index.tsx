@@ -27,7 +27,7 @@ const AdminHeader = () => {
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link
-            to="/admin"
+            to="/"
             className="m-4 uppercase text-2xl font-bold text-[#aaa] transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-[#333] duration-300"
           >
             🏠 ホーム
@@ -68,22 +68,22 @@ const AdminHeader = () => {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 <Link
-                  to="/admin"
-                  className="-mx-3 block rounded-lg px-4 py-3 mb-6 text-2xl font-bold leading-8 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  to="/"
+                  className="-mx-3 block rounded-lg px-4 py-3 text-2xl font-bold leading-10 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   🏠 ホーム
                 </Link>
                 <Link
                   to="/upload_images"
-                  className="-mx-3 block rounded-lg px-4 py-3 mb-6 text-2xl font-bold leading-8 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  className="-mx-3 block rounded-lg px-4 py-3 text-2xl font-bold leading-10 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   🗂️ アップロード
                 </Link>
                 <Link
                   to="/edit_images"
-                  className="-mx-3 block rounded-lg px-4 py-3 mb-6 text-2xl font-bold leading-8 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  className="-mx-3 block rounded-lg px-4 py-3 text-2xl font-bold leading-10 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   🖼️ ギャラリー編集
