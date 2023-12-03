@@ -26,7 +26,7 @@ const Gallery = () => {
         ogDescription={HEAD_DESCRIPTION_GALLERY}
       />
       <div className="mt-20">
-        <h2 className="text-4xl font-bold tracking-tight text-black mb-10">ギャラリー</h2>
+        <h1 className="text-5xl font-bold tracking-tight text-gray-900 mb-32 mx-auto flex items-center justify-between after:pb-2 after:border-b-2 after:border-b-cyan-600 after:content-['最新のイラスト']" />
         <div className="grid grid-rows-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
           {illustrations.map((illustration) => (
             <ImagePreview key={illustration.id} src={illustration.src} alt={illustration.alt} />

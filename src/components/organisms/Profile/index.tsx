@@ -14,14 +14,16 @@ const Profile = () => {
         ogDescription={HEAD_DESCRIPTION_PROFILE}
       />
       <div className="mt-20">
-        <h2 className="text-4xl font-bold tracking-tight text-black mb-10">絵を始めたきっかけ</h2>
-        <p className="text-base/loose">
+        <h1 className="text-5xl font-bold tracking-tight text-gray-900 mb-32 mx-auto flex items-center justify-between after:pb-2 after:border-b-2 after:border-b-cyan-600 after:content-['絵を始めたきっかけ']" />
+        <p className="text-2xl leading-10">
           幼い頃から絵を描くことが大好きで、幼少期は自由帳、学生時代はスケッチブックやiPhoneに好きな絵を描いていました。
         </p>
-        <p className="text-base/loose">
+        <p className="text-2xl leading-10">
           2020年、コロナ禍でおうち時間が増えたことをきっかけに思い切ってiPadを手に入れ、ずっと気になっていたデジタルイラストを始めました。
         </p>
-        <p className="text-base/loose">現在は依頼を受けてイラストを制作するイラストレーターとして活動しています。</p>
+        <p className="text-2xl leading-10 flex items-center justify-start after:animate-bounce after:content-['🦖']">
+          現在は依頼を受けてイラストを制作するイラストレーターとして活動しています。
+        </p>
       </div>
     </>
   );
