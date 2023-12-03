@@ -3,7 +3,6 @@ import { memo, useState, DragEvent, useCallback, useEffect, ChangeEvent, Synthet
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { PhotoIcon } from '@heroicons/react/24/solid';
-import { Link } from 'react-router-dom';
 
 import {
   HEAD_TITLE_UPLOAD_IMAGES,
@@ -183,8 +182,9 @@ const UploadImages = () => {
         ogTitle={HEAD_TITLE_UPLOAD_IMAGES}
         ogDescription={HEAD_DESCRIPTION_UPLOAD_IMAGES}
       />
-      <div className="bg-gray-100">
+      <div className="bg-white">
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl font-semibold text-black mb-8">画像アップロード</h1>
           <div className="mx-auto py-16 sm:py-24 lg:max-w-none lg:py-32">
             <form onSubmit={(e) => handleOnSubmit(e)}>
               <div className="space-y-12">
@@ -193,9 +193,9 @@ const UploadImages = () => {
                     <div className="col-span-full">
                       <label
                         htmlFor="upload-photos"
-                        className="grid grid-flow-col text-sm font-medium leading-6 text-gray-900"
+                        className="grid grid-flow-col text-lg font-medium leading-6 text-gray-900"
                       >
-                        <span className="text-start">画像をアップロード</span>
+                        {/* <span className="text-start">画像をアップロード</span> */}
                         <span className="text-end">
                           {imageSizeKB} / {maxImageSizeKB}KB (最大5MB)
                         </span>
@@ -211,7 +211,7 @@ const UploadImages = () => {
                       >
                         <div className="text-center">
                           <PhotoIcon className="mx-auto h-12 w-12 text-gray-300" aria-hidden="true" />
-                          <div className="mt-4 flex text-sm leading-6 text-gray-600">
+                          <div className="mt-4 flex text-base leading-6 text-gray-600">
                             <label
                               htmlFor="file-upload"
                               className="relative cursor-pointer rounded-md font-semibold text-indigo-600 focus-within:outline-none hover:text-indigo-500"
@@ -250,9 +250,6 @@ const UploadImages = () => {
               </div>
 
               <div className="mt-6 flex items-center justify-end gap-x-6">
-                <Link to="/edit_images" className="text-sm font-semibold leading-6 text-gray-900">
-                  編集ぺージへ
-                </Link>
                 <button
                   type="button"
                   className="text-sm font-semibold leading-6 text-gray-900"
