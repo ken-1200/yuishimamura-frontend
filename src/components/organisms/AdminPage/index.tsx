@@ -3,9 +3,9 @@ import { memo } from 'react';
 import { Link } from 'react-router-dom';
 
 import {
-  HEAD_TITLE_UPLOAD_IMAGES,
-  HEAD_DESCRIPTION_UPLOAD_IMAGES,
-  HEAD_KEYWORDS_UPLOAD_IMAGES,
+  HEAD_TITLE_ADMIN,
+  HEAD_DESCRIPTION_ADMIN,
+  HEAD_KEYWORDS_ADMIN,
 } from '../../../constants';
 import Head from '../../atoms/Head';
 
@@ -13,11 +13,11 @@ const AdminPage = () => {
   return (
     <>
       <Head
-        title={HEAD_TITLE_UPLOAD_IMAGES}
-        description={HEAD_DESCRIPTION_UPLOAD_IMAGES}
-        keywords={HEAD_KEYWORDS_UPLOAD_IMAGES}
-        ogTitle={HEAD_TITLE_UPLOAD_IMAGES}
-        ogDescription={HEAD_DESCRIPTION_UPLOAD_IMAGES}
+        title={HEAD_TITLE_ADMIN}
+        description={HEAD_DESCRIPTION_ADMIN}
+        keywords={HEAD_KEYWORDS_ADMIN}
+        ogTitle={HEAD_TITLE_ADMIN}
+        ogDescription={HEAD_DESCRIPTION_ADMIN}
       />
       <div className="mt-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
