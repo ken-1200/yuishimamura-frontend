@@ -2,14 +2,16 @@ import { lazy, Suspense, useState, useEffect } from 'react';
 
 import { css } from '@emotion/react';
 import { HelmetProvider } from 'react-helmet-async';
-import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
+import AdminHeader from './components/organisms/AdminHeader';
 import GlobalFooter from './components/organisms/GlobalFooter';
 import GlobalHeader from './components/organisms/GlobalHeader';
 
 const TopPage = lazy(async () => await import('./components/organisms/TopPage'));
 const Gallery = lazy(async () => await import('./components/organisms/Gallery'));
 const Profile = lazy(async () => await import('./components/organisms/Profile'));
+const AdminPage = lazy(async () => await import('./components/organisms/AdminPage'));
 const UploadImages = lazy(async () => await import('./components/organisms/UploadImages'));
 const EditImages = lazy(async () => await import('./components/organisms/EditImages'));
 const PageNotFound = lazy(async () => await import('./components/organisms/404'));
@@ -21,7 +23,7 @@ const Root = () => {
     <Route key="top_page" path="/" element={<TopPage />} />,
     <Route key="gallery" path="/gallery" element={<Gallery />} />,
     <Route key="profile" path="/profile" element={<Profile />} />,
-    <Route key="admin" path="/admin" element={<Navigate replace to="/upload_images" />} />,
+    <Route key="admin" path="/admin" element={<AdminPage />} />,
     <Route key="upload_images" path="/upload_images" element={<UploadImages />} />,
     <Route key="edit_images" path="/edit_images" element={<EditImages />} />,
     <Route key="not_found" path="*" element={<PageNotFound />} />,
@@ -35,7 +37,7 @@ const Root = () => {
   };
 
   useEffect(() => {
-    const reservedPathName = ['/gallery', '/upload_images', '/edit_images'];
+    const reservedPathName = ['/gallery', '/admin', '/upload_images', '/edit_images'];
 
     window.addEventListener('resize', handleWindowHeightResize);
 
@@ -58,8 +60,8 @@ const Root = () => {
         height: ${locationPathName === '*' ? windowHeight + 'px' : '100%'};
       `}
     >
-      <GlobalHeader />
-      <section className="py-6 px-4 sm:p-6 md:py-10 md:px-8">
+      {['/admin', '/upload_images', '/edit_images'].includes(locationPathName) ? <AdminHeader /> : <GlobalHeader />}
+      <section className="py-6 px-8 sm:p-6 md:py-10 md:px-10">
         <Suspense fallback={<>Loading...</>}>
           <Routes>{routes}</Routes>
         </Suspense>
