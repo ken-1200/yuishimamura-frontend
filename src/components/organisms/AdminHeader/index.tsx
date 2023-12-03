@@ -11,10 +11,7 @@ const AdminHeader = () => {
     <header className="py-6 px-4 sm:p-6 md:px-8">
       <nav className="mx-auto flex items-center justify-between py-6 px-4 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
-          <Link
-            to="/admin"
-            className="my-4 text-3xl font-bold leading-7 text-gray-900"
-          >
+          <Link to="/admin" className="my-4 text-3xl font-bold leading-7 text-gray-900">
             🦕 管理画面
           </Link>
         </div>
@@ -48,9 +45,7 @@ const AdminHeader = () => {
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white py-6 px-4 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="mx-auto flex items-center justify-between py-6 px-4 lg:px-8">
             <div className="flex lg:flex-1">
-              <div className="my-4 text-3xl font-bold leading-7 text-gray-900">
-                🦕 管理画面
-              </div>
+              <div className="my-4 text-3xl font-bold leading-7 text-gray-900">🦕 管理画面</div>
             </div>
             <div className="flex lg:hidden">
               <span className="-m-1.5 p-1.5" />
