@@ -33,7 +33,7 @@ const AdminPage = () => {
                   </p>
                 </div>
                 <div className="mx-auto flex bg-gray-A900 justify-between items-center p-4 pt-2">
-                  <Link to="/upload_images">アップロード画面へ</Link>
+                  <Link to="/admin/upload_images">アップロード画面へ</Link>
                 </div>
               </div>
               <div className="flex flex-col md:w-96 overflow-hidden rounded bg-gray-A900">
@@ -49,7 +49,7 @@ const AdminPage = () => {
                   </p>
                 </div>
                 <div className="mx-auto flex bg-gray-A900 justify-between items-center p-4 pt-2">
-                  <Link to="/edit_images">ギャラリー編集画面へ</Link>
+                  <Link to="/admin/edit_images">ギャラリー編集画面へ</Link>
                 </div>
               </div>
             </div>

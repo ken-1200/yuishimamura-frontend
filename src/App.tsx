@@ -24,8 +24,8 @@ const Root = () => {
     <Route key="gallery" path="/gallery" element={<Gallery />} />,
     <Route key="profile" path="/profile" element={<Profile />} />,
     <Route key="admin" path="/admin" element={<AdminPage />} />,
-    <Route key="upload_images" path="/upload_images" element={<UploadImages />} />,
-    <Route key="edit_images" path="/edit_images" element={<EditImages />} />,
+    <Route key="upload_images" path="/admin/upload_images" element={<UploadImages />} />,
+    <Route key="edit_images" path="/admin/edit_images" element={<EditImages />} />,
     <Route key="not_found" path="*" element={<PageNotFound />} />,
   ];
 
@@ -37,7 +37,7 @@ const Root = () => {
   };
 
   useEffect(() => {
-    const reservedPathName = ['/gallery', '/admin', '/upload_images', '/edit_images'];
+    const reservedPathName = ['/gallery', '/admin', '/admin/upload_images', '/admin/edit_images'];
 
     window.addEventListener('resize', handleWindowHeightResize);
 
@@ -60,7 +60,11 @@ const Root = () => {
         height: ${locationPathName === '*' ? windowHeight + 'px' : '100%'};
       `}
     >
-      {['/admin', '/upload_images', '/edit_images'].includes(locationPathName) ? <AdminHeader /> : <GlobalHeader />}
+      {['/admin', '/admin/upload_images', '/admin/edit_images'].includes(locationPathName) ? (
+        <AdminHeader />
+      ) : (
+        <GlobalHeader />
+      )}
       <section className="py-6 px-8 sm:p-6 md:py-10 md:px-10">
         <Suspense fallback={<>Loading...</>}>
           <Routes>{routes}</Routes>

@@ -33,13 +33,13 @@ const AdminHeader = () => {
             🏠 ホーム
           </Link>
           <Link
-            to="/upload_images"
+            to="/admin/upload_images"
             className="m-4 uppercase text-2xl font-bold text-[#aaa] transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-[#333] duration-300"
           >
             🗂️ アップロード
           </Link>
           <Link
-            to="/edit_images"
+            to="/admin/edit_images"
             className="m-4 uppercase text-2xl font-bold text-[#aaa] transition ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-[#333] duration-300"
           >
             🖼️ ギャラリー編集
@@ -75,14 +75,14 @@ const AdminHeader = () => {
                   🏠 ホーム
                 </Link>
                 <Link
-                  to="/upload_images"
+                  to="/admin/upload_images"
                   className="-mx-3 block rounded-lg px-4 py-3 text-2xl font-bold leading-10 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   🗂️ アップロード
                 </Link>
                 <Link
-                  to="/edit_images"
+                  to="/admin/edit_images"
                   className="-mx-3 block rounded-lg px-4 py-3 text-2xl font-bold leading-10 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                   onClick={() => setMobileMenuOpen(false)}
                 >
