@@ -8,6 +8,7 @@ type Props = {
   ogDescription: string;
 };
 
+// ヘッダー情報を設定するコンポーネント（ただし、タイトル以外はSPAのため、SEO対策にはあまり効果がない）
 const Head = ({ title, description, keywords, ogTitle, ogDescription }: Props) => {
   const defaultDescription = '最新情報は、Instagramをチェック&フォローしてください。';
   return (
