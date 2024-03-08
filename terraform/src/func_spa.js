@@ -4,10 +4,10 @@ function handler(event) {
   var headers = request.headers;
   var uri = request.uri;
 
-// パスが/admin以下の場合のみ、IP制限を行う
-if (/\/admin(\/.*|\?.*)?$/.test(uri)) {
+  // パスが/admin以下の場合のみ、IP制限を行う
+  if (/\/admin(\/.*|\?.*)?$/.test(uri)) {
     // アクセス許可するIPを設定
-    var IP_WHITE_LIST = ['126.126.243.50', '60.119.103.50'];
+    var IP_WHITE_LIST = ['126.51.251.16', '60.119.103.50'];
     // クライアントIPが、アクセス許可するIPに含まれていればtrueを返す
     var isPermittedIp = IP_WHITE_LIST.includes(clientIP);
 
@@ -34,4 +34,3 @@ if (/\/admin(\/.*|\?.*)?$/.test(uri)) {
 
   return request;
 }
-
