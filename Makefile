@@ -44,7 +44,7 @@ deploy-s3:
 	@make lint
 	rm -rf dist/
 	npm run build
-	aws s3 sync dist/ s3://${DEPLOY_BUCKET} --delete --profile ${AWS_PROFILE} --exclude "dist/images/*" --exclude "dist/images.json"
+	aws s3 sync dist/ s3://${DEPLOY_BUCKET} --delete --profile ${AWS_PROFILE} --exclude "images/*" --exclude "images.json"
 
 .PHONY: deploy-cf
 deploy-cf:
